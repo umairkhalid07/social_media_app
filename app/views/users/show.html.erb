@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="text-center my-3">User Profile</h1>
+
+  <% if @user.profile_photo.attached? %>
+    <div class="text-center"><%= image_tag @user.profile_photo, width: "10%", height: "10%" %></div>
+  <% end %>
+
+  <div class="h2 text-center">
+    <%= @user.name %>
+  </div>
+
+  <div class="h5 text-center">
+    Email: <%= @user.email %>
+  </div>
+
+  <div class="h5 text-center">
+    Contact Number: <%= @user.phone_number %>
+  </div>
+
+  <div class="h5 text-center">
+    <%= @user.location %>
+  </div>
+
+  <div class="h5 text-center">
+    Birthday: <%= @user.birthday_at.strftime("%d/%m/%Y") %>
+  </div>
+
+  <div class="bio text-center my-5 p-3">
+    <%= @user.bio %>
+  </div>
+
+  <div class="text-center"><%= link_to "Edit Profile", edit_user_registration_path, :class => "main-button" %></div>
+</div>
