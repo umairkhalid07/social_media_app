@@ -6,13 +6,16 @@
   <% unless @incoming.nil? %>
     <% @incoming.each do |request| %>
       <div class="user-entry">
-        <% incoming_friend = User.find(request.user_id) %>
+        <% incoming_friend = request.user %>
 
-        <div class="col-2 h4 my-3 text-center"><%= image_tag incoming_friend.profile_photo, width: "30%", height: "30%" %></div>
+        <div class="col-1 h4 my-3 text-center"><%= image_tag incoming_friend.profile_photo, width: "30%", height: "30%" %></div>
         <div class="col-2 h4 my-3 text-center"><%= incoming_friend.name %></div>
         <div class="col-3 h4 my-3 text-center"><%= incoming_friend.email %></div>
-        <div class="col-3 h4 my-3 text-center"><%= incoming_friend.created_at.strftime("%Y %m %d, %I:%M %p") %></div>
-        <div class="col-2 h4 my-3 text-center"><%= link_to "Accept", root_path, class: "small-button mx-5" %></div>
+        <div class="col-3 h4 my-3"><%= incoming_friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
+        <div class="col-3 h4 my-3 text-center">
+          <%= link_to "Accept", root_path, class: "small-button d-inline" %>
+          <%= link_to "Decline", friend_request_path(request), data: { "turbo-method": :delete }, class: "small-button d-inline" %>
+        </div>
       </div>
     <% end %>
   <% end %>
@@ -24,13 +27,16 @@
   <% unless @outgoing.nil? %>
     <% @outgoing.each do |request| %>
       <div class="user-entry">
-        <% outgoing_friend = User.find(request.friend_id) %>
+        <% outgoing_friend = request.friend %>
 
-        <div class="col-2 h4 my-3"><%= image_tag outgoing_friend.profile_photo, width: "30%", height: "30%" %></div>
-        <div class="col-2 h4 my-3"><%= outgoing_friend.name %></div>
-        <div class="col-3 h4 my-3"><%= outgoing_friend.email %></div>
+        <div class="col-1 h4 my-3 text-center"><%= image_tag outgoing_friend.profile_photo, width: "30%", height: "30%" %></div>
+        <div class="col-2 h4 my-3 text-center"><%= outgoing_friend.name %></div>
+        <div class="col-3 h4 my-3 text-center"><%= outgoing_friend.email %></div>
         <div class="col-3 h4 my-3"><%= outgoing_friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
-        <div class="col-2 h4 my-3"><%= link_to "Accept", root_path, class: "small-button mx-5" %></div>
+        <div class="col-3 h4 my-3 text-center">
+          <%= link_to "Accept", root_path, class: "small-button d-inline" %>
+          <%= link_to "Delete", friend_request_path(request), data: { "turbo-method": :delete }, class: "small-button d-inline" %>
+        </div>
       </div>
     <% end %>
   <% end %>
