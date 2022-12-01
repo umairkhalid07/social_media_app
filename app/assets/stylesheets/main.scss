@@ -1,17 +1,22 @@
+$base-color: #0090c9;
+$dark-color: #2a2a2a;
+$light-color: white;
+$error-color: #3a3a3a;
+
 body {
   font-family: "Roboto Thin", serif
 }
 
 .bg {
-  background-color: purple;
-  color: white;
+  background-color: $base-color;
+  color: $light-color;
 }
 
 .error-messages {
   text-align: left;
   font-size: 12px;
   padding: 2px;
-  color: red;
+  color: $error-color;
   font-style: italic;
 }
 
@@ -22,16 +27,16 @@ body {
 
 .link {
   font-size: 16px;
-  color: purple;
+  color: $base-color;
   text-decoration: none;
 }
 .link:hover {
-  color: black;
+  color: $dark-color;
 }
 
 .btn-lg {
-  background-color: purple;
-  color: white;
+  background-color: $base-color;
+  color: $light-color;
   padding: 5px 10px;
   border-radius: 8px;
   border: none
@@ -39,7 +44,7 @@ body {
 
 .bio {
   font-size: 16px;
-  border: 1px dashed purple;
+  border: 1px dashed $base-color;
   margin-left: 35%;
   margin-right: 35%;
 }
@@ -49,13 +54,13 @@ body {
   font-weight: bold;
   font-size: 25px;
   padding: 15px 30px;
-  border: 4px solid black;
-  background-color: purple;
-  color: white;
+  border: 4px solid $dark-color;
+  background-color: $base-color;
+  color: $light-color;
   border-radius: 10px;
 }
 .main-button:hover {
-  color: white;
+  color: $light-color;
 }
 
 .small-button {
@@ -63,13 +68,13 @@ body {
   font-weight: bold;
   font-size: 18px;
   padding: 10px 25px;
-  border: 2px solid black;
-  background-color: purple;
-  color: white;
+  border: 2px solid $dark-color;
+  background-color: $base-color;
+  color: $light-color;
   border-radius: 6px;
 }
 .small-button:hover {
-  color: white;
+  color: $light-color;
 }
 
 .user-entry{
@@ -77,7 +82,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid #ff96ff;
+  border: 1px solid $dark-color;
   padding: 15px 20px;
 }
 
@@ -92,9 +97,9 @@ body {
   font-weight: bold;
   font-size: 16px;
   padding: 10px 20px;
-  border: 10px solid black;
-  background-color: purple;
-  color: white;
+  border: 10px solid $dark-color;
+  background-color: $base-color;
+  color: $light-color;
 }
 .nav-button:hover {
   color: black;

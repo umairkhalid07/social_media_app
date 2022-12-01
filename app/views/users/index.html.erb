@@ -7,7 +7,11 @@
           <div class="col-2 h4"><%= image_tag user.profile_photo, width: "30%", height: "30%" %></div>
           <div class="col-4 h4 my-3"><%= user.name %></div>
           <div class="col-3 h4 my-3"><%= user.email %></div>
-          <div class="col-3"><%= link_to "Send Friend Request", create_friend_request_friend_requests_path(user_id: user.id), class: "small-button mx-5" %></div>
+          <% if @curr_user.friends.include?(user) %>
+            <div class="col-3"><%= link_to "Chat", root_path, class: "small-button mx-5" %></div>
+          <% else %>
+            <div class="col-3"><%= link_to "Add Friend", create_friend_request_friend_requests_path(user_id: user.id), class: "small-button mx-5 bg-warning" %></div>
+          <% end %>
         </div>
     <% end %>
   <% end %>

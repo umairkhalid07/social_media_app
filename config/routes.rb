@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :friend_requests do
     collection do
       get :create_friend_request
+      get :accept_friend_request
     end
   end
 
