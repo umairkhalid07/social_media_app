@@ -1,7 +1,7 @@
-$base-color: #0090c9;
-$dark-color: #2a2a2a;
+$base-color: #00a3e8;
+$dark-color: #212529;
 $light-color: white;
-$error-color: #3a3a3a;
+$error-color: #ff0000;
 
 body {
   font-family: "Roboto Thin", serif
@@ -9,7 +9,7 @@ body {
 
 .bg {
   background-color: $base-color;
-  color: $light-color;
+  color: $dark-color;
 }
 
 .error-messages {
@@ -18,6 +18,11 @@ body {
   padding: 2px;
   color: $error-color;
   font-style: italic;
+}
+
+.no-gutter {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .form-signin{
@@ -36,7 +41,7 @@ body {
 
 .btn-lg {
   background-color: $base-color;
-  color: $light-color;
+  color: $dark-color;
   padding: 5px 10px;
   border-radius: 8px;
   border: none
@@ -56,11 +61,11 @@ body {
   padding: 15px 30px;
   border: 4px solid $dark-color;
   background-color: $base-color;
-  color: $light-color;
+  color: $dark-color;
   border-radius: 10px;
 }
 .main-button:hover {
-  color: $light-color;
+  color: $dark-color;
 }
 
 .small-button {
@@ -70,11 +75,11 @@ body {
   padding: 10px 25px;
   border: 2px solid $dark-color;
   background-color: $base-color;
-  color: $light-color;
+  color: $dark-color;
   border-radius: 6px;
 }
 .small-button:hover {
-  color: $light-color;
+  color: $dark-color;
 }
 
 .user-entry{
@@ -89,20 +94,20 @@ body {
 .nav-bar{
   display: flex;
   flex-direction: column;
-  padding: 0;
+  height: 100vh;
 }
 .nav-button{
   display: flex;
   text-decoration: none;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
   padding: 10px 20px;
   border: 10px solid $dark-color;
   background-color: $base-color;
-  color: $light-color;
+  color: $dark-color;
 }
 .nav-button:hover {
-  color: black;
+  color: $dark-color;
 }
 
 .main-logo{
