@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
-  # resources :friend_requests
-
   resources :friend_requests do
     collection do
       get :create_friend_request
@@ -20,4 +18,6 @@ Rails.application.routes.draw do
   end
 
   root 'posts#index'
+
+  resources :posts
 end

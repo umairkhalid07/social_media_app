@@ -25,6 +25,6 @@ class FriendRequestsController < ApplicationController
   def accept_friend_request
     @friend_request = FriendRequest.find(params[:request_id])
     @friend_request.accept
-    redirect_to friend_requests_path
+    redirect_to friends_index_path
   end
 end

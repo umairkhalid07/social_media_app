@@ -1,0 +1,16 @@
+<div class="display-6 text-center py-3 post-heading">Your Feed</div>
+
+<% @posts.each do |post| %>
+  <div class="card mx-5 my-3 p-2" style="width: 50%;">
+<!--    <h5 class="card-title"><%#= post.user.name %></h5>-->
+    <h5 class="card-title fw-bold m-3">Umair Khalid</h5>
+    <div class="card-body">
+      <p class="card-text">Posted at <%= post.created_at.strftime("%d/%m/%Y, %I:%M %p") %></p>
+      <p class="card-text"><%= post.text %></p>
+      <% if post.image.attached? %>
+        <div class=""><%= image_tag post.image, width: "30%", height: "30%" %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
