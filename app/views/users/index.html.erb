@@ -1,9 +1,14 @@
-<div class="container">
+<div class="display-5 my-5 text-center">All Users</div>
+
+<div class="container my-5">
   <% @users.each do |user| %>
-    <div class="row my-5">
-      <div class="col-4 h4 my-3">Name: <%= user.name %></div>
-      <div class="col-4 h4 my-3">Email: <%= user.email %></div>
-      <div class="col-4"><%= link_to "Send Friend Request", destroy_user_session_path, 'data-turbo-method': :delete, :class => "main-button" %></div>
-    </div>
+    <% unless user == current_user %>
+        <div class="user-entry">
+          <div class="col-2 h4"><%= image_tag user.profile_photo, width: "30%", height: "30%" %></div>
+          <div class="col-4 h4 my-3"><%= user.name %></div>
+          <div class="col-3 h4 my-3"><%= user.email %></div>
+          <div class="col-3"><%= link_to "Send Friend Request", create_friend_request_friend_requests_path(user_id: user.id), class: "small-button mx-5" %></div>
+        </div>
+    <% end %>
   <% end %>
 </div>

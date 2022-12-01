@@ -11,7 +11,19 @@
   </head>
 
   <body>
-    <%= render "layouts/header", position: @position %>
-    <%= yield %>
+    <%= render "layouts/header"%>
+    <div class="row">
+      <div class="col-1 nav-bar">
+        <%= render "layouts/nav"%>
+      </div>
+
+      <div class="col-10">
+        <%= yield %>
+      </div>
+
+      <div class="col-1">
+       <div class="main-logo"><%= image_tag("Brainx_logo.png") %></div>
+      </div>
+    </div>
   </body>
 </html>

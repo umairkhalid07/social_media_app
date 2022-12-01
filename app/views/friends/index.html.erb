@@ -1,0 +1,12 @@
+<div class="display-5 my-5 text-center">All Friends</div>
+
+<div class="container my-5">
+  <% @friends.each do |friend| %>
+    <div class="user-entry">
+      <div class="col-2 h4"><%= image_tag friend.profile_photo, width: "30%", height: "30%" %></div>
+      <div class="col-4 h4 my-3"><%= friend.name %></div>
+      <div class="col-3 h4 my-3"><%= friend.email %></div>
+      <div class="col-3"><%= link_to "Chat", root_path, :class => "small-button mx-5" %></div>
+    </div>
+  <% end %>
+</div>
