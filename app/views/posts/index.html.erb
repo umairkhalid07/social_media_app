@@ -1,14 +1,17 @@
 <div class="display-6 text-center py-3 post-heading">Your Feed</div>
 
 <% @posts.each do |post| %>
-  <div class="card mx-5 my-3 p-2" style="width: 50%;">
-<!--    <h5 class="card-title"><%#= post.user.name %></h5>-->
-    <h5 class="card-title fw-bold m-3">Umair Khalid</h5>
-    <div class="card-body">
-      <p class="card-text">Posted at <%= post.created_at.strftime("%d/%m/%Y, %I:%M %p") %></p>
-      <p class="card-text"><%= post.text %></p>
+  <div class="card m-5" style="width: 90%;">
+    <div class="card-body p-4">
+      <h5 class="card-title d-inline fw-bold my-4"><%= post.user.name %></h5>
+      <p class="card-text d-inline float-end fst-italic"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
+      <p class="card-text my-4"><%= post.text %></p>
       <% if post.image.attached? %>
-        <div class=""><%= image_tag post.image, width: "30%", height: "30%" %></div>
+        <div class="my-4"><%= image_tag post.image, width: "40%", height: "40%" %></div>
+      <% end %>
+      <% if post.user == current_user %>
+        <%= link_to "Edit Post", edit_user_post_path(@user.id, post.id), :class => "small-button me-2 bg-primary text-light" %>
+        <%= link_to "Delete Post", user_post_path(@user.id, post.id), data: { "turbo-method": :delete }, :class => "small-button me-2 bg-danger text-light" %>
       <% end %>
     </div>
   </div>

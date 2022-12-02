@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  get 'friends/index'
-  get 'friends/destroy'
+  root 'posts#index'
 
-  get 'friends#new', to: 'friends#create'
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :users, only: [:index, :show]
+  resources :friends
+  resources :users do
+    resources :posts
+  end
 
   resources :friend_requests do
     collection do
@@ -16,8 +17,4 @@ Rails.application.routes.draw do
       get :accept_friend_request
     end
   end
-
-  root 'posts#index'
-
-  resources :posts
 end

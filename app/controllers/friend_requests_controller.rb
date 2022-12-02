@@ -16,7 +16,7 @@ class FriendRequestsController < ApplicationController
     @friend_request = current_user.friend_requests.new(friend: friend)
 
     if @friend_request.save
-      render root_path
+      redirect_to controller: :users, action: :index, notice: 'Sent friend request'
     else
       redirect_to controller: :users, action: :index, notice: 'Cant send friend request'
     end
@@ -25,6 +25,6 @@ class FriendRequestsController < ApplicationController
   def accept_friend_request
     @friend_request = FriendRequest.find(params[:request_id])
     @friend_request.accept
-    redirect_to friends_index_path
+    redirect_to friends_path
   end
 end

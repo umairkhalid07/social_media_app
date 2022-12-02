@@ -1,100 +1,21 @@
+//SASS variables
 $base-color: #00a3e8;
 $dark-color: #212529;
-$light-color: white;
+$light-color: #ffffff;
 $error-color: #ff0000;
+$success-color: #2fff2f;
 
+//Font family
 body {
   font-family: "Roboto Thin", serif
 }
 
-.bg {
-  background-color: $base-color;
-  color: $dark-color;
+//BG color
+.bg, .bg-primary{
+  background-color: $base-color !important;
 }
 
-.error-messages {
-  text-align: left;
-  font-size: 12px;
-  padding: 2px;
-  color: $error-color;
-  font-style: italic;
-}
-
-.no-gutter {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.form-signin{
-  margin-left: 39% !important;
-  margin-right: 39% !important;
-}
-.form-post{
-  margin-left: 20% !important;
-  margin-right: 20% !important;
-}
-
-.link {
-  font-size: 16px;
-  color: $base-color;
-  text-decoration: none;
-}
-.link:hover {
-  color: $dark-color;
-}
-
-.btn-lg {
-  background-color: $base-color;
-  color: $dark-color;
-  padding: 5px 10px;
-  border-radius: 8px;
-  border: none
-}
-
-.bio {
-  font-size: 16px;
-  border: 1px dashed $base-color;
-  margin-left: 35%;
-  margin-right: 35%;
-}
-
-.main-button {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 25px;
-  padding: 15px 30px;
-  border: 4px solid $dark-color;
-  background-color: $base-color;
-  color: $dark-color;
-  border-radius: 10px;
-}
-.main-button:hover {
-  color: $dark-color;
-}
-
-.small-button {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  padding: 10px 25px;
-  border: 2px solid $dark-color;
-  background-color: $base-color;
-  color: $dark-color;
-  border-radius: 6px;
-}
-.small-button:hover {
-  color: $dark-color;
-}
-
-.user-entry{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid $dark-color;
-  padding: 15px 20px;
-}
-
+//Main navbar styling
 .nav-bar{
   display: flex;
   flex-direction: column;
@@ -115,10 +36,104 @@ body {
   color: $dark-color;
 }
 
-.main-logo{
-  transform: rotate(90deg);
+//Styling error messages
+.error-messages {
+  text-align: left;
+  font-size: 12px;
+  padding: 2px;
+  color: $error-color;
+  font-style: italic;
+}
+.success-messages{
+  text-align: left;
+  font-size: 12px;
+  padding: 5px;
+  color: $success-color;
+  font-style: italic;
 }
 
+//Remove gutter
+.no-gutter {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+//Sticky navbar and header
+.sticky-class {
+  overflow: hidden !important;
+  position: sticky !important;
+  z-index: 100 !important;
+  top: 0;
+}
+
+//Forms styling
+.form-signin{
+  margin-left: 39% !important;
+  margin-right: 39% !important;
+}
+.form-post{
+  margin-left: 20% !important;
+  margin-right: 20% !important;
+}
+
+//Normal link styling
+.link {
+  font-size: 16px;
+  color: $base-color;
+  text-decoration: none;
+}
+.link:hover {
+  color: $dark-color;
+}
+
+//Disable link
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+//Long link button styling
+.btn-lg {
+  background-color: $base-color;
+  color: $dark-color;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none
+}
+
+//User bio styling
+.bio {
+  font-size: 16px;
+  border: 1px dashed $base-color;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+//Small link button styling
+.small-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 25px;
+  background-color: $base-color;
+  color: $dark-color;
+  border-radius: 6px;
+}
+.small-button:hover {
+  color: $dark-color;
+}
+
+//Users list styling
+.user-entry{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $dark-color;
+  padding: 15px 20px;
+}
+
+//User post styling
 .post-heading {
   border-bottom: 5px solid $dark-color;
 }
