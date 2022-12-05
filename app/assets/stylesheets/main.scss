@@ -79,11 +79,11 @@ body {
 //Normal link styling
 .link {
   font-size: 16px;
-  color: $base-color;
+  color: $dark-color;
   text-decoration: none;
 }
 .link:hover {
-  color: $dark-color;
+  color: $base-color;
 }
 
 //Disable link
@@ -136,4 +136,16 @@ body {
 //User post styling
 .post-heading {
   border-bottom: 5px solid $dark-color;
+}
+
+//Styling upvotes section
+.upvotes {
+  text-align: center;
+  width: 15%;
+  padding: 10px 10px 1px 1px;
+}
+
+//Remove decoration from links
+.no-deco {
+  text-decoration: none;
 }

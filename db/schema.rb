@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_080427) do
 
   create_table "posts", force: :cascade do |t|
     t.string "text", null: false
+    t.integer "upvotes", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_080427) do
     t.string "phone_number", default: ""
     t.string "location", default: ""
     t.datetime "birthday_at"
+    t.boolean "already_voted"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "created_at", null: false
