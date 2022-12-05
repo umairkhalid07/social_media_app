@@ -8,11 +8,17 @@
           <div class="col-4 h4 my-3"><%= user.name %></div>
           <div class="col-3 h4 my-3"><%= user.email %></div>
           <% if @curr_user.friends.include?(user) %>
-            <div class="col-3"><%= link_to "Chat", root_path, class: "small-button mx-5" %></div>
+            <div class="col-3"><%= link_to "Chat", root_path, class: "small-button mx-5 text-light" %></div>
+          <% elsif current_user.pending_friends.include?(user) %>
+            <div class="col-3"><%= link_to "Sent Friend Request", root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
           <% else %>
             <div class="col-3"><%= link_to "Add Friend", create_friend_request_friend_requests_path(user_id: user.id), class: "small-button mx-5 bg-warning text-dark" %></div>
           <% end %>
         </div>
     <% end %>
   <% end %>
+
+  <%# flash.each do |type, msg| %>
+<!--    <div class="success-messages"><%#= msg %></div>-->
+  <%# end %>
 </div>

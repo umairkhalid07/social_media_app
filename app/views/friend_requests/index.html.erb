@@ -13,8 +13,8 @@
         <div class="col-3 h4 my-3 text-center"><%= incoming_friend.email %></div>
         <div class="col-3 h4 my-3"><%= incoming_friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
         <div class="col-3 h4 my-3 text-center">
-          <%= link_to "Accept", accept_friend_request_friend_requests_path(request_id: request.id), class: "small-button d-inline bg-success" %>
-          <%= link_to "Decline", friend_request_path(request), data: { "turbo-method": :delete }, class: "small-button d-inline bg-danger" %>
+          <%= link_to "Accept", accept_friend_request_friend_requests_path(request_id: request.id), class: "small-button d-inline bg-success text-light" %>
+          <%= link_to "Decline", friend_request_path(request), data: { "turbo-method": :delete }, class: "small-button d-inline bg-danger text-light" %>
         </div>
       </div>
     <% end %>
@@ -34,7 +34,7 @@
         <div class="col-3 h4 my-3 text-center"><%= outgoing_friend.email %></div>
         <div class="col-3 h4 my-3"><%= outgoing_friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
         <div class="col-3 h4 my-3 text-center">
-          <%= link_to "Delete", friend_request_path(request), data: { "turbo-method": :delete }, class: "small-button d-inline bg-danger" %>
+          <%= link_to "Delete", friend_request_path(request), data: { "turbo-method": :delete }, class: "small-button d-inline bg-danger text-light" %>
         </div>
       </div>
     <% end %>
