@@ -70,10 +70,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_083123) do
 
   create_table "reactions", force: :cascade do |t|
     t.boolean "reaction_type"
+    t.bigint "user_id", null: false
     t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_reactions_on_post_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,4 +101,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_083123) do
   add_foreign_key "friendships", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "reactions", "posts"
+  add_foreign_key "reactions", "users"
 end

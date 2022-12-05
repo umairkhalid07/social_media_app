@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :friends
   resources :users do
     resources :posts do
-      resources :reactions
+      resources :reactions do
+        collection do
+          get :like
+          get :dislike
+        end
+      end
     end
   end
 
