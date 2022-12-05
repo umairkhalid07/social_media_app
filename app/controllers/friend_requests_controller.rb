@@ -1,9 +1,5 @@
 class FriendRequestsController < ApplicationController
-
   def index
-    # @incoming = FriendRequest.where(friend: current_user)
-    # @outgoing = current_user.friend_requests
-
     @requests = FriendRequest.all
   end
 

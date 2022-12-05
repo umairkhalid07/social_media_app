@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = @user.posts.new
+    @post = current_user.posts.new
   end
 
   def create
@@ -18,11 +18,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    # @post = current_user.posts.find(params[:id])
   end
 
   def update
-    # @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to root_path
     else
@@ -31,7 +29,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # @post = current_user.posts.find(params[:id])
     @post.destroy!
     redirect_to root_path
   end
@@ -39,7 +36,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :image, :likes, :dislikes)
+    params.require(:post).permit(:text, :image)
   end
 
   def set_posts

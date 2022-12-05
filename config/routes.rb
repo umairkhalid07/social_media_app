@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :friends
   resources :users do
     resources :posts do
-      get :upvote
+      resources :reactions
     end
   end
 
