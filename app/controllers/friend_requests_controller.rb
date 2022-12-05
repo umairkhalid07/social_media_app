@@ -5,18 +5,6 @@ class FriendRequestsController < ApplicationController
     @outgoing = current_user.friend_requests
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def update
-    @friend_request = FriendRequest.find(params[:id])
-    @friend_request.accept
-    redirect_to friend_requests_path
-  end
-
   def destroy
     @friend_request = FriendRequest.find(params[:id])
     @friend_request.destroy
@@ -28,9 +16,15 @@ class FriendRequestsController < ApplicationController
     @friend_request = current_user.friend_requests.new(friend: friend)
 
     if @friend_request.save
-      render :index, status: :created, location: @friend_request
+      render root_path
     else
       redirect_to controller: :users, action: :index, notice: 'Cant send friend request'
     end
+  end
+
+  def accept_friend_request
+    @friend_request = FriendRequest.find(params[:request_id])
+    @friend_request.accept
+    redirect_to friend_requests_path
   end
 end
