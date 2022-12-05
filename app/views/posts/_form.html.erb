@@ -1,11 +1,10 @@
 <div class="form-post text-start my-5">
   <div class="form">
 
-    <% post = @post %>
     <%= form_with model: [user, post] do |form| %>
 
       <div class="field form-floating">
-        <div class="fw-bold my-2"><%= form.label :text %><br/></div>
+        <div class="fw-bold my-2"><%= form.label :text %></div>
         <div class="my-2"><%= form.text_area :text, size: "1x8", autofocus: true, :class => 'form-control' %></div>
         <% form.object.errors.full_messages_for(:name).each do |message| %>
           <div class="error-messages"><%= message %></div>
@@ -13,7 +12,7 @@
       </div>
 
       <div class="field form-floating">
-        <div class="fw-bold my-2"><%= form.label "Optional Image" %><br/></div>
+        <div class="fw-bold my-2"><%= form.label "Optional Image" %></div>
         <div class="my-2"><%= form.file_field :image, required: false, direct_upload: true, accept: "image/png,image/jpg,image/jpeg" %></div>
         <% form.object.errors.full_messages_for(:image).each do |message| %>
           <div class="error"><%= message %></div>

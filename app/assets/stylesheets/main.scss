@@ -1,27 +1,23 @@
-//SASS variables
 $base-color: #00a3e8;
 $dark-color: #212529;
 $light-color: #ffffff;
 $error-color: #ff0000;
 $success-color: #2fff2f;
 
-//Font family
 body {
   font-family: "Roboto Thin", serif
 }
 
-//BG color
-.bg, .bg-primary{
+.bg, .bg-primary {
   background-color: $base-color !important;
 }
 
-//Main navbar styling
-.nav-bar{
+.nav-bar {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
-.nav-button{
+.nav-button {
   display: flex;
   text-decoration: none;
   font-weight: bold;
@@ -36,7 +32,6 @@ body {
   color: $dark-color;
 }
 
-//Styling error messages
 .error-messages {
   text-align: left;
   font-size: 12px;
@@ -44,7 +39,7 @@ body {
   color: $error-color;
   font-style: italic;
 }
-.success-messages{
+.success-messages {
   text-align: left;
   font-size: 12px;
   padding: 5px;
@@ -52,13 +47,6 @@ body {
   font-style: italic;
 }
 
-//Remove gutter
-.no-gutter {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-//Sticky navbar and header
 .sticky-class {
   overflow: hidden !important;
   position: sticky !important;
@@ -66,17 +54,15 @@ body {
   top: 0;
 }
 
-//Forms styling
-.form-signin{
+.form-signin {
   margin-left: 39% !important;
   margin-right: 39% !important;
 }
-.form-post{
+.form-post {
   margin-left: 20% !important;
   margin-right: 20% !important;
 }
 
-//Normal link styling
 .link {
   font-size: 16px;
   color: $dark-color;
@@ -86,13 +72,11 @@ body {
   color: $base-color;
 }
 
-//Disable link
 .disabled {
   pointer-events: none;
   cursor: default;
 }
 
-//Long link button styling
 .btn-lg {
   background-color: $base-color;
   color: $dark-color;
@@ -101,7 +85,6 @@ body {
   border: none
 }
 
-//User bio styling
 .bio {
   font-size: 16px;
   border: 1px dashed $base-color;
@@ -109,7 +92,6 @@ body {
   margin-right: 35%;
 }
 
-//Small link button styling
 .small-button {
   text-decoration: none;
   font-weight: bold;
@@ -123,8 +105,7 @@ body {
   color: $dark-color;
 }
 
-//Users list styling
-.user-entry{
+.user-entry {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -133,19 +114,16 @@ body {
   padding: 15px 20px;
 }
 
-//User post styling
 .post-heading {
   border-bottom: 5px solid $dark-color;
 }
 
-//Styling upvotes section
 .upvotes {
   text-align: center;
   width: 15%;
   padding: 10px 10px 1px 1px;
 }
 
-//Remove decoration from links
 .no-deco {
   text-decoration: none;
 }
