@@ -15,7 +15,7 @@ Rails.application.routes.draw do
           get :dislike
         end
       end
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:new, :create, :edit, :update, :destroy]
     end
   end
 

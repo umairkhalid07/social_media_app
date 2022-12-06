@@ -1,0 +1,8 @@
+<div class="m-0 p-0">
+    <%= form_with model: [ post.user, post, post.comments.build ] do |form| %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :post_id, value: post.id %>
+      <div class="d-inline mb-0 pb-0"><%= form.text_field :text, class: 'p-2 form-control form-comment d-inline' %></div>
+      <div class="d-inline mb-0 pb-0"><%= form.submit "Comment", class: "p-2 small-button text-light" %></div>
+    <% end %>
+ </div>

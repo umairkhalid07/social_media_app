@@ -1,8 +1,9 @@
 <div class="display-5 my-5 text-center">Friend Requests</div>
 
-<div class="h3 my-5 text-center">Incoming Requests</div>
-
-<div class="container my-5">
+<%= turbo_stream_from "users" %>
+<%= turbo_frame_tag "users" do %>
+  <div class="h3 my-5 text-center">Incoming Requests</div>
+  <div class="container my-5">
     <% @requests.where(friend: current_user).each do |request| %>
       <div class="user-entry">
         <div class="col-1 h4 my-3 text-center"><%= image_tag request.user.profile_photo, width: "30%", height: "30%" %></div>
@@ -15,11 +16,10 @@
         </div>
       </div>
     <% end %>
-</div>
+  </div>
 
-<div class="h3 my-5 text-center">Outgoing Requests</div>
-
-<div class="container my-5">
+  <div class="h3 my-5 text-center">Outgoing Requests</div>
+  <div class="container my-5">
     <% @requests.where(user: current_user).each do |request| %>
       <div class="user-entry">
         <div class="col-1 h4 my-3 text-center"><%= image_tag request.friend.profile_photo, width: "30%", height: "30%" %></div>
@@ -31,4 +31,5 @@
         </div>
       </div>
     <% end %>
-</div>
+  </div>
+<% end %>
