@@ -1,0 +1,8 @@
+<div>
+  <h5 class="card-title d-inline fw-bold my-4 fs-3"><%= post.user.name %></h5>
+  <p class="card-text d-inline float-end fst-italic fs-6 text-secondary"><%= local_time_ago(post.created_at) %></p>
+  <p class="card-text my-4 fs-4"><%= post.text %></p>
+  <% if post.image.attached? %>
+    <div class="my-4"><%= image_tag post.image, width: "40%", height: "40%" %></div>
+  <% end %>
+</div>
