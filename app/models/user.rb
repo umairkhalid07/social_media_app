@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :reactions, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :name, :phone_number, :bio, :location, :birthday_at, :email, :profile_photo, presence: true
   validates :email, :phone_number, uniqueness: true

@@ -3,7 +3,7 @@ class ReactionsController < ApplicationController
   def like
     if @reaction.blank?
       @reaction = Reaction.create(user: current_user, post: @post, reaction_type: params[:reaction_type])
-      @reaction.save!
+      @reaction.save
     elsif @reaction.reaction_type == true
       @reaction.update(reaction_type: nil)
     else

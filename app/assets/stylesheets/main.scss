@@ -1,11 +1,12 @@
 $base-color: #00a3e8;
+$secondary-color: #e0e0e0;
 $dark-color: #212529;
 $light-color: #ffffff;
 $error-color: #ff0000;
 $success-color: #2fff2f;
 
-body {
-  font-family: "Roboto Thin", serif
+html, body {
+  font-family: "Helvetica Neue", serif
 }
 
 .bg, .bg-primary {
@@ -62,6 +63,9 @@ body {
   margin-left: 20% !important;
   margin-right: 20% !important;
 }
+.form-comment {
+  width: 90%;
+}
 
 .link {
   font-size: 16px;
@@ -99,7 +103,9 @@ body {
   padding: 10px 25px;
   background-color: $base-color;
   color: $dark-color;
+  border: none;
   border-radius: 6px;
+  box-shadow: none;
 }
 .small-button:hover {
   color: $dark-color;
@@ -120,10 +126,23 @@ body {
 
 .upvotes {
   text-align: center;
-  width: 15%;
-  padding: 10px 10px 1px 1px;
+  width: 30%;
+  padding: 15px 1px;
 }
 
 .no-deco {
   text-decoration: none;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.comment-box {
+  display: inline-block;
+  background-color: $secondary-color;
+  color: $dark-color;
+  padding: 10px 60px 10px 15px;
+  margin: 10px 5px;
+  border-radius: 15px;
 }

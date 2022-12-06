@@ -6,15 +6,16 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :friends
-  resources :users do
+  resources :friends, only: [:index, :destroy]
+  resources :users, only: [:index, :show] do
     resources :posts do
-      resources :reactions do
+      resources :reactions, only: [] do
         collection do
           get :like
           get :dislike
         end
       end
+      resources :comments, only: [:create, :destroy]
     end
   end
 
