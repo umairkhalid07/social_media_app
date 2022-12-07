@@ -78,4 +78,3 @@ end
 gem 'devise'
 gem "image_processing"
 gem "font-awesome-sass"
-gem 'local_time'

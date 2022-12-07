@@ -5,7 +5,7 @@
           <div class="comment-box">
             <p class="card-text d-inline fw-bold my-3 fs-5"><%= comment.user.name %></p><br>
             <p class="card-text d-inline my-3 fs-5 "><%= comment.text %></p><br>
-            <p class="card-text d-inline fs-6 fst-italic text-secondary my-3"><%= local_time_ago(comment.created_at) %></p>
+            <p class="card-text d-inline fs-6 fst-italic text-secondary my-3"><%= comment.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
             <br>
             <% if comment.user == current_user %>
               <%= link_to "Edit", edit_user_post_comment_path(current_user.id, comment.post.id, comment.id), :class => "no-deco d-inline text-danger" %>

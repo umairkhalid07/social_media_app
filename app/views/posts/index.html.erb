@@ -7,15 +7,9 @@
       <div class="card-body p-4">
         <%= render "posts/post", post: post %>
         <hr>
-        <%= turbo_stream_from "reactions" %>
-        <%= turbo_frame_tag "reactions" do %>
-          <%= render "posts/reactions", post: post %>
-        <% end %>
+        <%= render "posts/reactions", post: post %>
         <hr>
-        <%= turbo_stream_from "comments" %>
-        <%= turbo_frame_tag "comments" do %>
-          <%= render "posts/comments", post: post %>
-        <% end %>
+        <%= render "posts/comments", post: post %>
       </div>
     </div>
   <% end %>
