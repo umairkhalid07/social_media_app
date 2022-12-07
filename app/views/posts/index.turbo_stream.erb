@@ -1,6 +1,6 @@
 <div class="display-6 text-center py-3 post-heading">Your Feed</div>
 
-<%= turbo_stream_from "posts" %>
-<%= turbo_frame_tag "posts" do %>
+<div id="post"></div>
+<%= turbo_stream.replace("post") do %>
   <%= render @posts %>
 <% end %>

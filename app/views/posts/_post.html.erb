@@ -1,9 +1,82 @@
-<div>
-  <h5 class="card-title d-inline fw-bold my-4 fs-3"><%= post.user.name %></h5>
-  <p class="card-text d-inline float-end fst-italic fs-6 text-secondary"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
-  <hr>
-  <p class="card-text my-4 fs-4"><%= post.text %></p>
-  <% if post.image.attached? %>
-    <div class="my-4"><%= image_tag post.image, width: "40%", height: "40%" %></div>
-  <% end %>
-</div>
+<%= turbo_frame_tag dom_id(post) do %>
+  <div class="card m-5" style="width: 90%;">
+    <div class="card-body p-4">
+
+      <div>
+        <h5 class="card-title d-inline fw-bold my-4 fs-3"><%= post.user.name %></h5>
+        <p class="card-text d-inline float-end fst-italic fs-6 text-secondary"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
+
+        <hr>
+
+        <p class="card-text my-4 fs-4"><%= post.text %></p>
+        <% if post.image.attached? %>
+          <div class="my-4"><%= image_tag post.image, width: "40%", height: "40%" %></div>
+        <% end %>
+      </div>
+
+      <hr>
+
+      <div class="mt-4">
+        <div class="upvotes my-4 d-inline me-5">
+          <%= link_to like_user_post_reactions_path(user_id: post.user.id, post_id: post.id, reaction_type: true), 'data-turbo-stream': true, class: 'no-deco' do %>
+            <i class="fa-solid fa-thumbs-up fa-2x d-inline mx-2 text-success"></i>
+          <% end %>
+
+          <div class="upvotes h2 mx-2 d-inline"><%= post.reactions.where(reaction_type: true).count %></div>
+
+          <%= link_to like_user_post_reactions_path(user_id: post.user.id, post_id: post.id, reaction_type: false), class: 'no-deco' do %>
+            <i class="fa-solid fa-thumbs-down fa-2x d-inline mx-2 text-danger"></i>
+          <% end %>
+
+          <div class="upvotes h2 mx-2 d-inline"><%= post.reactions.where(reaction_type: false).count %></div>
+        </div>
+
+        <div class="d-inline me-2 float-end">
+          <% if post.user == current_user %>
+            <%= link_to "Edit Post", edit_user_post_path(post.user.id, post.id), :class => "small-button me-2 bg-primary text-light" %>
+            <%= link_to "Delete Post", user_post_path(post.user.id, post.id), data: { "turbo-method": :delete }, :class => "small-button bg-danger text-light" %>
+          <% end %>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="mt-4">
+        <h5 class="card-title d-inline fw-bold my-4">Comments Section</h5><br>
+
+        <div class="my-3">
+          <% post.comments.each do |comment| %>
+            <div class="comment-box">
+              <p class="card-text d-inline fw-bold my-3 fs-5"><%= comment.user.name %></p><br>
+              <p class="card-text d-inline my-3 fs-5 "><%= comment.text %></p><br>
+              <p class="card-text d-inline fs-6 fst-italic text-secondary my-3"><%= comment.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
+              <br>
+              <% if comment.user == current_user %>
+                <%= link_to "Edit", edit_user_post_comment_path(current_user.id, comment.post.id, comment.id), :class => "no-deco d-inline text-danger" %>
+                |
+                <%= link_to "Delete", user_post_comment_path(current_user.id, comment.post.id, comment.id), data: { "turbo-method": :delete }, :class => "no-deco d-inline text-danger" %>
+              <% end %>
+            </div>
+            <br>
+          <% end %>
+        </div>
+
+        <hr>
+
+        <p class="card-text d-inline fw-bold my-4">Add a comment</p>
+        <div class="m-0 p-0">
+          <%= form_with model: [ post.user, post, post.comments.build ] do |form| %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <div class="d-inline mb-0 pb-0"><%= form.text_field :text, class: 'p-2 form-control form-comment d-inline' %></div>
+            <div class="d-inline mb-0 pb-0"><%= form.submit "Comment", class: "p-2 small-button text-light" %></div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+

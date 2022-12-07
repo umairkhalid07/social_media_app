@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment.update(comment_params)
+    redirect_to root_path
   end
 
   def destroy

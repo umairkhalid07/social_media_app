@@ -1,2 +1,5 @@
 <div class="display-6 text-center py-3 post-heading">Edit Post</div>
-<%= render "posts/form", user: current_user, post: @post %>
+
+<%= turbo_frame_tag "post_form" do %>
+  <%= render "posts/form", user: current_user, post: @post %>
+<% end %>
