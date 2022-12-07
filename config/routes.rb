@@ -7,13 +7,12 @@ Rails.application.routes.draw do
   end
 
   resources :friends
-  resources :users do
-    resources :posts do
-      resources :reactions do
-        collection do
-          get :like
-          get :dislike
-        end
+  resources :users
+  resources :posts do
+    resources :reactions do
+      collection do
+        get :like
+        get :dislike
       end
     end
   end
