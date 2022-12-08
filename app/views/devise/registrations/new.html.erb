@@ -2,7 +2,7 @@
   <div class="form">
     <h1 class="h1 my-5 fw-bold">Sign Up</h1>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name,html: {'data-turbo' => false}, url: registration_path(resource_name)) do |f| %>
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :name %><br/></div>
@@ -77,7 +77,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign Up", :class => "btn-lg w-100 my-2" %>
+        <%= f.submit "Sign Up",'data-turbo-stream': false, :class => "btn-lg w-100 my-2" %>
       </div>
     <% end %>
 

@@ -1,5 +1,16 @@
 class ReactionsController < ApplicationController
   before_action :set_reaction
+
+  # def like
+  #   reaction = current_user.reactions.find_or_initialize_by(post_id: params[:post_id])
+  #   if reaction.persisted?
+  #     reaction.update(reaction_type: reaction.present? ? nil : params[:reaction_type])
+  #   else
+  #     reaction.update(reaction_type: params[:reaction_type])
+  #   end
+  #   redirect_to root_path
+  # end
+
   def like
     if @reaction.blank?
       @reaction = current_user.reactions.create(post_id: params[:post_id], reaction_type: params[:reaction_type])

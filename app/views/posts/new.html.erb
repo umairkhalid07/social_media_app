@@ -1,4 +1,4 @@
-<div class="display-6 text-center py-3 post-heading">New Post</div>
 <%= turbo_stream.update("index") do %>
+  <div class="display-6 text-center py-3 post-heading">New Post</div>
   <%= render "posts/form", user: current_user, post: @post %>
 <% end %>
