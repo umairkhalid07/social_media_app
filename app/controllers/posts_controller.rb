@@ -17,6 +17,7 @@ class PostsController < ApplicationController
         format.turbo_stream { redirect_to root_path }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -25,16 +26,24 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to root_path
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to root_path }
+        format.turbo_stream { redirect_to root_path }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    @post.destroy!
-    redirect_to root_path
+    respond_to do |format|
+      if @post.destroy!
+        format.html { redirect_to root_path }
+        format.turbo_stream { redirect_to root_path }
+      end
+    end
   end
 
   private

@@ -6,7 +6,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :name %><br/></div>
-        <div class="my-2"><%= f.text_field :name, autofocus: true, :class => 'form-control' %></div>
+        <div class="my-2"><%= f.text_field :name, autofocus: true, :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:name).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -14,7 +14,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :phone_number %><br/></div>
-        <div class="my-2"><%= f.text_field :phone_number, autofocus: true, :class => 'form-control' %></div>
+        <div class="my-2"><%= f.text_field :phone_number, autofocus: true, :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:phone_number).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -22,7 +22,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :bio %><br/></div>
-        <div class="my-2"><%= f.text_area :bio, autofocus: true, size: "1x5", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.text_area :bio, autofocus: true, size: "1x5", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:bio).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -30,7 +30,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :location %><br/></div>
-        <div class="my-2"><%= f.text_field :location, autofocus: true, :class => 'form-control' %></div>
+        <div class="my-2"><%= f.text_field :location, autofocus: true, :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:location).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -38,7 +38,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :birthday_at %><br/></div>
-        <div class="my-2"><%= f.date_select :birthday_at, start_year: Date.today.year - 50, end_year: Date.today.year, autofocus: true, :class => 'form-control' %></div>
+        <div class="my-2"><%= f.date_select :birthday_at, start_year: Date.today.year - 50, end_year: Date.today.year, autofocus: true, :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:birthday_at).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -46,7 +46,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :email %><br/></div>
-        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:email).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -54,7 +54,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :password %><br></div>
-        <div class="my-2"><%= f.password_field :password, autocomplete: "new-password", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.password_field :password, autocomplete: "new-password", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:password).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -62,7 +62,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :password_confirmation %><br/></div>
-        <div class="my-2"><%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:password_confirmation).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>

@@ -6,7 +6,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :email %><br/></div>
-        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:email).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>

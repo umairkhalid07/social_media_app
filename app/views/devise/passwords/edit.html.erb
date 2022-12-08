@@ -10,7 +10,7 @@
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em><br />
         <% end %>
-        <div class="my-2"><%= f.password_field :password, autofocus: true, autocomplete: "new-password", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.password_field :password, autofocus: true, autocomplete: "new-password", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:password).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -18,7 +18,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :password_confirmation, "Confirm new password" %><br/></div>
-        <div class="my-2"><%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:password_confirmation).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
