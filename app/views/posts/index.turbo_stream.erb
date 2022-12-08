@@ -1,12 +1,6 @@
 <%= turbo_stream.update("index") do %>
+  <div class="display-6 text-center py-3 post-heading">Your Feed</div>
   <% @posts.each do |post| %>
   <%= render "posts/post", post: post %>
   <% end %>
-
-<%#= turbo_stream_from "posts" %>
-<%# @posts.each do |post| %>
-  <%#= turbo_stream.replace(dom_id(post)) do %>
-    <%#= render "posts/post", post: post %>
-  <%# end %>
-<%# end %>
 <% end %>
