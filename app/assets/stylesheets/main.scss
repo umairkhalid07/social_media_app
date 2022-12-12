@@ -1,5 +1,5 @@
 $base-color: #00a3e8;
-$secondary-color: #dadada;
+$secondary-color: #b4b4b4;
 $dark-color: #212529;
 $light-color: #ffffff;
 $error-color: #ff0000;
@@ -147,12 +147,42 @@ html, body {
 }
 
 .chat-window {
-  border: 2px solid $secondary-color;
-  border-radius: 15px;
-margin: 30px 120px;
-  padding: 30px 70px;
+  border: 1px solid $secondary-color;
+  margin: 0 200px;
+  padding: 10px 0;
+  height: 50vh;
+  overflow-y: scroll;
+  max-width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.border-window {
+  border: 1px solid $secondary-color;
+  padding: 10px 0;
+  margin: 0 200px;
 }
 
-.message-window {
-  border: 1px solid $secondary-color;
+.sent-message {
+  display: inline-flex;
+  justify-content: flex-end;
+  background-color: $base-color;
+  color: $light-color;
+  padding: 10px 20px;
+  margin: 10px 10px 10px 150px;
+  font-size: 1.2em;
+  border-radius: 15px;
+  float: right;
+}
+
+.received-message {
+  display: inline-flex;
+  justify-content: flex-start;
+  background-color: $secondary-color;
+  color: black;
+  padding: 10px 20px;
+  margin: 10px 150px 10px 10px;
+  font-size: 1.2em;
+  border-radius: 15px;
+  float: end;
 }
