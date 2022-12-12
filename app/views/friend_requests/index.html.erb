@@ -1,4 +1,4 @@
-<div class="display-5 my-5 text-center">Friend Requests</div>
+<div class="display-5 text-center fw-bold py-3 post-heading">Friend Requests</div>
 
 <%= turbo_stream_from "users" %>
 <%= turbo_frame_tag "users" do %>
@@ -11,7 +11,7 @@
         <div class="col-3 h4 my-3 text-center"><%= request.user.email %></div>
         <div class="col-3 h4 my-3"><%= request.user.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
         <div class="col-3 h4 my-3 text-center">
-          <%= link_to "Accept", accept_friend_request_friend_requests_path(request_id: request.id), class: "small-button d-inline bg-success text-light" %>
+          <%= link_to "Accept", accept_friend_request_friend_requests_path(request_id: request.id, friend_id: request.user.id), class: "small-button d-inline bg-success text-light" %>
           <%= link_to "Decline", friend_request_path(request), data: { "turbo-method": :delete }, class: "small-button d-inline bg-danger text-light" %>
         </div>
       </div>

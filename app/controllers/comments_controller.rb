@@ -5,7 +5,11 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.save!
-    redirect_to root_path
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Comment Posted" }
+      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Comment Posted" }
+    end
   end
 
   def edit
@@ -13,12 +17,20 @@ class CommentsController < ApplicationController
 
   def update
     @comment.update(comment_params)
-    redirect_to root_path
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Comment Updated" }
+      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Comment Updated" }
+    end
   end
 
   def destroy
     @comment.destroy!
-    redirect_to root_path
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Comment Deleted" }
+      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Comment Deleted" }
+    end
   end
 
   private

@@ -3,7 +3,7 @@
     <%= image_tag("Brainx_logo.png", alt: "logo") %>
   </div>
   <div class="col-8 m-0 p-0">
-    <h1 class="display-1 text-center bg py-3 m-0 text-light">BRAINX MEDIA</h1>
+    <h1 class="display-1 fw-bold text-center bg py-3 m-0 text-light">BRAINX MEDIA</h1>
   </div>
 </div>
 
@@ -16,6 +16,7 @@
             <p>Signed in as <%= current_user.name %></p>
           <% end %>
         </div>
+        <div id="flash"><%= render "layouts/flash" %></div>
       </ul>
     </div>
   </div>

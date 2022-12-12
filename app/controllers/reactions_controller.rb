@@ -20,7 +20,11 @@ class ReactionsController < ApplicationController
     else
       @reaction.update(reaction_type: true)
     end
-    redirect_to root_path
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Post Liked" }
+      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Liked" }
+    end
   end
 
   def dislike
@@ -32,7 +36,11 @@ class ReactionsController < ApplicationController
     else
       @reaction.update(reaction_type: false)
     end
-    redirect_to root_path
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Post Disliked" }
+      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Disliked" }
+    end
   end
 
   private

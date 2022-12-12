@@ -1,5 +1,5 @@
 $base-color: #00a3e8;
-$secondary-color: #e0e0e0;
+$secondary-color: #dadada;
 $dark-color: #212529;
 $light-color: #ffffff;
 $error-color: #ff0000;
@@ -144,4 +144,15 @@ html, body {
   padding: 10px 60px 10px 15px;
   margin: 10px 5px;
   border-radius: 15px;
+}
+
+.chat-window {
+  border: 2px solid $secondary-color;
+  border-radius: 15px;
+margin: 30px 120px;
+  padding: 30px 70px;
+}
+
+.message-window {
+  border: 1px solid $secondary-color;
 }

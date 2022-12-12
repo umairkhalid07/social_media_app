@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
 
   resources :friends
-  resources :users
+  resources :users do
+    resources :conversations
+  end
   resources :posts do
     resources :reactions do
       collection do

@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_many :reactions, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
+  has_many :messages, through: :conversations, dependent: :destroy
 
   validates :name, :phone_number, :bio, :location, :birthday_at, :email, :profile_photo, presence: true
   validates :email, :phone_number, uniqueness: true

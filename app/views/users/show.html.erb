@@ -1,5 +1,5 @@
-<div class="container">
-  <h1 class="text-center my-3">User Profile</h1>
+<div>
+  <div class="display-5 text-center fw-bold py-3 post-heading">User Profile</div>
 
   <% if @user.profile_photo.attached? %>
     <div class="text-center"><%= image_tag @user.profile_photo, width: "10%", height: "10%" %></div>

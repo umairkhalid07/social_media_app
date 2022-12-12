@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_posts, only: [:edit, :update, :destroy]
   def index
-    @posts = Post.all
+    @posts = Post.includes(:comments, :reactions)
   end
 
   def new
@@ -13,11 +13,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to root_path }
-        format.turbo_stream { redirect_to root_path }
+        format.html { redirect_to root_path, notice: "Post Created" }
+        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Created" }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream { render :new, status: :unprocessable_entity }
+        format.html { render :new, notice: "Post Not Created", status: :unprocessable_entity }
+        format.turbo_stream { render :new, flash.now[:notice] => "Post Not Created", status: :unprocessable_entity }
       end
     end
   end
@@ -28,11 +28,11 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to root_path }
-        format.turbo_stream { redirect_to root_path }
+        format.html { redirect_to root_path, notice: "Post Updated" }
+        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Updated" }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.turbo_stream { render :edit, status: :unprocessable_entity }
+        format.html { render :edit, notice: "Post Not Updated", status: :unprocessable_entity }
+        format.turbo_stream { render :edit, flash.now[:notice] => "Post Not Updated", status: :unprocessable_entity }
       end
     end
   end
@@ -40,8 +40,8 @@ class PostsController < ApplicationController
   def destroy
     respond_to do |format|
       if @post.destroy!
-        format.html { redirect_to root_path }
-        format.turbo_stream { redirect_to root_path }
+        format.html { redirect_to root_path, notice: "Post Deleted" }
+        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Deleted" }
       end
     end
   end
