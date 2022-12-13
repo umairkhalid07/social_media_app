@@ -1,0 +1,46 @@
+<div id='friends_chat'>
+
+  <div class="border-window mt-3">
+    <div class="h5 text-center fw-bold py-2"><%= @friend.name %></div>
+  </div>
+
+  <div class="chat-window">
+    <div class="messages row">
+      <% conversation.messages.each do |message| %>
+        <%= turbo_frame_tag dom_id(message) do %>
+          <% if message.user == current_user %>
+            <div class="col-12">
+              <div class="sent-message">
+                <%= message.body %>
+                <% if message.user == current_user %>
+                  <%= link_to "<i class='fa-solid fa-trash ms-2 text-light'></i>".html_safe, conversation_message_path(conversation.id, message.id), data: { "turbo-method": :delete }, :class => "no-deco" %>
+                <% end %>
+              </div>
+            </div>
+          <% else %>
+            <div class="col-12">
+              <div class="received-message">
+                <%= message.body %>
+                <% if message.user == current_user %>
+                  <%= link_to "<i class='fa-solid fa-trash ms-2 text-light'></i>".html_safe, conversation_message_path(conversation.id, message.id), data: { "turbo-method": :delete }, :class => "no-deco" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %><br>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="border-window">
+    <div class="mx-2 p-0">
+      <%= form_with model: [ conversation, conversation.messages.build ] do |form| %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.hidden_field :conversation_id, value: conversation.id %>
+        <div class="d-inline mb-0 pb-0"><%= form.text_field :body, class: 'p-2 form-control shadow-none form-comment d-inline' %></div>
+        <div class="d-inline mb-0 pb-0"><%= form.submit "Message", class: "p-2 small-button text-light" %></div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

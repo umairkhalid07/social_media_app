@@ -9,7 +9,7 @@
         <div class="col-4 h4 my-3"><%= user.name %></div>
         <div class="col-3 h4 my-3"><%= user.email %></div>
         <% if current_user.friends.include?(user) %>
-          <div class="col-3"><%=link_to "Chat <i class='mx-2 fa-solid fa-message ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-primary text-light" %></div>
+          <div class="col-3"><%=link_to "Friends <i class='mx-2 fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-success text-light disabled" %></div>
         <% elsif current_user.pending_friends.include?(user) %>
           <div class="col-3"><%= link_to "Sent Request <i class='fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
         <% elsif user == current_user %>

@@ -1,6 +1,7 @@
 class FriendsController < ApplicationController
   def index
-    @friends = current_user.friends
+    @friends = current_user.friends.includes(:conversations)
+    @conversations = current_user.conversations
   end
 
   def destroy
