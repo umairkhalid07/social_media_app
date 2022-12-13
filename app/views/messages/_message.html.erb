@@ -1,0 +1,38 @@
+<div id='messages'>
+  <div class="border-window mt-3">
+    <div class="h5 text-center fw-bold py-2"><%= friend.name %></div>
+  </div>
+
+  <div class="chat-window">
+    <div class="messages row">
+      <% conversation.messages.each do |message| %>
+        <% if message.user == current_user %>
+          <div class="col-12">
+            <div class="sent-message">
+              <%= message.body %>
+              <%= link_to "<i class='fa-solid fa-trash ms-3 text-danger'></i>".html_safe, conversation_message_path(conversation.id, message.id), data: { "turbo-method": :delete }, :class => "no-deco" %>
+            </div>
+          </div>
+        <% else %>
+          <div class="col-12">
+            <div class="received-message">
+              <%= message.body %>
+            </div>
+          </div>
+        <% end %><br>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="border-window">
+    <div class="mx-2 p-0">
+      <%= form_with model: [ @conversation, @conversation.messages.build ] do |form| %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.hidden_field :conversation_id, value: conversation.id %>
+        <div class="d-inline mb-0 pb-0"><%= form.text_field :body,placeholder: "Type your message here.....", class: 'border-0 p-2 form-control shadow-none form-message d-inline' %></div>
+        <div class="d-inline mb-0 pb-0"><%= form.submit "Message", class: "py-2 px-3 small-button text-light" %></div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

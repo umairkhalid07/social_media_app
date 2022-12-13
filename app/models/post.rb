@@ -5,8 +5,9 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :text, presence: true
+  validates :text, length: { minimum: 5 }
 
   default_scope { order(created_at: :desc) }
 
-  after_destroy_commit { broadcast_remove_to 'posts'}
+  # after_destroy_commit { broadcast_remove_to 'posts'}
 end

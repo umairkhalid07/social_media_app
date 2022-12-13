@@ -24,6 +24,6 @@ class MessagesController < ApplicationController
   end
 
   def set_message
-    @message = current_user.messages.find(params[:id])
+    @message = Message.find(params[:id])
   end
 end

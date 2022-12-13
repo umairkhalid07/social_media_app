@@ -1,0 +1,4 @@
+<%= turbo_stream_from "comments" %>
+<% turbo_frame_tag "comments" do %>
+  <%= render post.comments, user: current_user, post: post %>
+<% end %>

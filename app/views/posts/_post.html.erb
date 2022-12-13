@@ -21,13 +21,17 @@
           <i class="fa-solid fa-thumbs-up fa-2x d-inline mx-2 text-success"></i>
         <% end %>
 
-        <div class="upvotes h2 mx-2 d-inline"><%= post.reactions.where(reaction_type: true).count %></div>
+       <div class="d-inline" id='likes'>
+         <div class="upvotes h2 mx-2 d-inline"><%= get_likes(post) %></div>
+       </div>
 
-        <%= link_to dislike_post_reactions_path(post_id: post.id, reaction_type: false), 'data-turbo-stream': true, class: 'no-deco' do %>
+        <%= link_to like_post_reactions_path(post_id: post.id, reaction_type: false), 'data-turbo-stream': true, class: 'no-deco' do %>
           <i class="fa-solid fa-thumbs-down fa-2x d-inline mx-2 text-danger"></i>
         <% end %>
 
-        <div class="upvotes h2 mx-2 d-inline"><%= post.reactions.where(reaction_type: false).count %></div>
+        <div class="d-inline" id='dislikes'>
+          <div class="upvotes h2 mx-2 d-inline"><%= get_dislikes(post) %></div>
+        </div>
       </div>
 
       <div class="d-inline me-2 float-end">
@@ -43,24 +47,7 @@
     <div class="mt-4">
       <h5 class="card-title d-inline fw-bold my-4">Comments Section</h5><br>
 
-      <div class="my-3">
-        <% post.comments.each do |comment| %>
-          <%= turbo_frame_tag dom_id(comment) do %>
-            <div class="comment-box">
-              <p class="card-text d-inline fw-bold my-3 fs-5"><%= comment.user.name %></p><br>
-              <p class="card-text d-inline my-3 fs-5 "><%= comment.text %></p><br>
-              <p class="card-text d-inline fs-6 fst-italic text-secondary my-3"><%= comment.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
-              <br>
-              <% if comment.user == current_user %>
-                <%= link_to "Edit", edit_post_comment_path(comment.post.id, comment.id), :class => "no-deco d-inline text-danger" %>
-                <span>|</span>
-                <%= link_to "Delete", post_comment_path(comment.post.id, comment.id), data: { "turbo-method": :delete }, :class => "no-deco d-inline text-danger" %>
-              <% end %>
-            </div>
-          <% end %>
-          <br>
-        <% end %>
-      </div>
+      <%= render "comments/comments", post: post %>
 
       <hr>
 

@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :name, :phone_number, :bio, :location, :birthday_at, :email, :profile_photo, presence: true
   validates :email, :phone_number, uniqueness: true
-  validates :bio, length: { minimum: 15 }
+  validates :bio, length: { minimum: 20 }
   validates :phone_number, length: { is: 11 }
 
   default_scope { order(name: :asc) }

@@ -1,6 +1,6 @@
-<%= turbo_stream.update("index") do %>
+<%= turbo_stream.update("feed") do %>
   <div class="display-5 text-center fw-bold py-3 post-heading">Your Feed</div>
   <% @posts.each do |post| %>
-  <%= render "posts/post", post: post %>
+    <%= render "posts/post", post: post %>
   <% end %>
 <% end %>

@@ -1,15 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_comment, :set_post, only: [:edit, :update, :destroy]
 
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.save!
-
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: "Comment Posted" }
-      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Comment Posted" }
-    end
+    head 200
   end
 
   def edit
@@ -17,20 +12,12 @@ class CommentsController < ApplicationController
 
   def update
     @comment.update(comment_params)
-
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: "Comment Updated" }
-      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Comment Updated" }
-    end
+    head 200
   end
 
   def destroy
     @comment.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: "Comment Deleted" }
-      format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Comment Deleted" }
-    end
+    head 200
   end
 
   private
