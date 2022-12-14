@@ -4,8 +4,6 @@ class Message < ApplicationRecord
 
   validates_presence_of :body, :conversation_id
 
-  # after_create_commit { broadcast_append_to "messages", partial: "messages/message", locals: { conversation: conversation}, target: "messages" }
-  # after_update_commit { broadcast_update_to "messages", partial: "messages/message", locals: { conversation: conversation}, target: "messages" }
-  # after_destroy_commit { broadcast_replace_to "messages", partial: "messages/message", locals: { conversation: conversation}, target: "messages" }
-
+  after_create_commit { broadcast_append_to "messages", partial: "messages/message", locals: { message: self } }
+  after_destroy_commit { broadcast_remove_to "messages", target: "message_#{self.id}" }
 end

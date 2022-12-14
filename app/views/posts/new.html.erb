@@ -1,4 +1,2 @@
-<%= turbo_stream.update("feed") do %>
-  <div class="display-5 text-center fw-bold py-3 post-heading">New Post</div>
-  <%= render "posts/form", user: current_user, post: @post %>
-<% end %>
+<div class="display-5 text-center fw-bold py-3 post-heading">New Post</div>
+<%= render "posts/form", user: current_user, post: @post %>

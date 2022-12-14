@@ -1,5 +1,5 @@
 $base-color: #0093d3;
-$secondary-color: #c0c0c0;
+$secondary-color: #e0e0e0;
 $dark-color: #212529;
 $light-color: #ffffff;
 $error-color: #ff0000;
@@ -167,25 +167,39 @@ html, body {
 }
 
 .sent-message {
-  display: inline-flex;
-  justify-content: flex-end;
+  display: inline-block;
   background-color: $base-color;
   color: $light-color;
   padding: 10px 20px;
-  margin: 10px 10px 10px 150px;
+  margin: 20px 10px;
   font-size: 1.2em;
   border-radius: 15px;
-  float: right;
+  text-align: left;
+}
+
+.sent-message-container {
+  text-align: right;
 }
 
 .received-message {
-  display: inline-flex;
-  justify-content: flex-start;
+  display: inline-block;
   background-color: $secondary-color;
   color: black;
   padding: 10px 20px;
-  margin: 10px 150px 10px 10px;
-  font-size: 1.2em;
+  margin: 10px 20px;
+  font-size: 1.3em;
   border-radius: 15px;
-  float: end;
+  text-align: left;
+}
+
+.received-message-container {
+  text-align: left;
+}
+
+.fst-5 {
+  font-size: 0.8em;
+}
+
+.fst-6 {
+  font-size: 0.6em;
 }

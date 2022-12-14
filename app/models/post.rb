@@ -5,9 +5,10 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :text, presence: true
-  validates :text, length: { minimum: 5 }
 
   default_scope { order(created_at: :desc) }
 
-  # after_destroy_commit { broadcast_remove_to 'posts'}
+  after_create_commit { broadcast_prepend_to "posts", partial: "posts/post", locals: { post: self } }
+  after_update_commit { broadcast_replace_to "posts", partial: "posts/post", locals: { post: self } }
+  after_destroy_commit { broadcast_remove_to "posts", target: "post_#{self.id}" }
 end

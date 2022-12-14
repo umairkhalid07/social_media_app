@@ -10,9 +10,10 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
+    @post.save
 
     respond_to do |format|
-      if @post.save
+      if @post.persisted?
         format.html { redirect_to root_path, notice: "Post Created" }
         format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Created" }
       else
@@ -38,12 +39,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    respond_to do |format|
-      if @post.destroy!
-        format.html { redirect_to root_path, notice: "Post Deleted" }
-        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Deleted" }
-      end
-    end
+    @post.destroy
+    head 200
   end
 
   private
