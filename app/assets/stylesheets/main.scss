@@ -126,4 +126,24 @@ body {
 
 .no-deco {
   text-decoration: none;
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
+.nav-button {
+  display: flex;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 10px solid black;
+  background-color: purple;
+  color: white;
+}
+.nav-button:hover {
+  color: black;
+}
+
+.main-logo {
+  transform: rotate(90deg);
