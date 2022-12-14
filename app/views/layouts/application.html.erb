@@ -8,21 +8,21 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body>
-    <%= render "layouts/header"%>
-    <div class="row">
-      <div class="col-1 nav-bar">
-        <%= render "layouts/nav"%>
-      </div>
+  <%= render "layouts/header"%>
 
-      <div class="col-10">
-        <%= yield %>
-      </div>
+    <div class="container-fluid d-flex flex-column">
+      <div class="row">
+        <div class="col-2 nav-bar bg-dark position-sticky">
+          <%= render "layouts/nav"%>
+        </div>
 
-      <div class="col-1">
-       <div class="main-logo"><%= image_tag("Brainx_logo.png") %></div>
+        <div class="col-10 m-0 p-0">
+          <%= yield %>
+        </div>
       </div>
     </div>
   </body>
