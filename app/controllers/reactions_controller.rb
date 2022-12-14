@@ -1,5 +1,6 @@
 class ReactionsController < ApplicationController
-  before_action :set_variables
+  before_action :set_post
+  before_action :set_reaction
   def like
     if @reaction.blank?
       @reaction = Reaction.create(user: current_user, post: @post, reaction_type: params[:reaction_type])
@@ -26,9 +27,11 @@ class ReactionsController < ApplicationController
 
   private
 
-  def set_variables
-    @user = User.find(params[:user_id])
+  def set_post
     @post = @user.posts.find(params[:post_id])
+  end
+
+  def set_reaction
     @reaction = current_user.reactions.find_by(post_id: @post.id)
   end
 end

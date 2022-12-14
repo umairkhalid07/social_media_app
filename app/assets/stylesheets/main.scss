@@ -9,7 +9,7 @@ html, body {
   font-family: "Helvetica Neue", serif
 }
 
-.bg, .bg-primary {
+.bg-primary {
   background-color: $base-color !important;
 }
 
@@ -48,7 +48,7 @@ html, body {
   font-style: italic;
 }
 
-.sticky-class {
+.position-sticky {
   overflow: hidden !important;
   position: sticky !important;
   z-index: 100 !important;
@@ -146,3 +146,25 @@ html, body {
   margin: 10px 5px;
   border-radius: 15px;
 }
+=======
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.nav-button {
+  display: flex;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 10px solid black;
+  background-color: purple;
+  color: white;
+}
+.nav-button:hover {
+  color: black;
+}
+
+.main-logo {
+  transform: rotate(90deg);
