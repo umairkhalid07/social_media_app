@@ -47,8 +47,8 @@
 
       <div class="mt-4">
         <h5 class="card-title d-inline fw-bold my-4">Comments Section</h5><br>
-        <%= turbo_stream_from "comments" %>
-        <%= turbo_frame_tag "comments" do %>
+        <%= turbo_stream_from "comments_#{post.id}" %>
+        <%= turbo_frame_tag "comments_#{post.id}" do %>
           <%= render post.comments %>
         <% end %>
         <hr>

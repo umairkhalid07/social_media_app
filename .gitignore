@@ -37,4 +37,15 @@
 
 .idea
 
-!/app/assets/images/
+/app/assets/images/*
+/bin/*
+/lib/*
+/node_modules/*
+/public/*
+/vendor/*
+application.css
+package.json
+Procfile.dev
+yarn.lock
+.gitignore
+schema.rb
