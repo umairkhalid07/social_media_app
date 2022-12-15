@@ -8,8 +8,6 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
 !/log/.keep
 !/tmp/.keep
 
@@ -36,16 +34,17 @@
 /node_modules
 
 .idea
-
 /app/assets/images/*
 /bin/*
 /lib/*
 /node_modules/*
 /public/*
+/log/*
+/tmp/*
 /vendor/*
-application.css
-package.json
-Procfile.dev
-yarn.lock
-.gitignore
-schema.rb
+/application.css
+/package.json
+/Procfile.dev
+/yarn.lock
+/.gitignore
+/db/schema.rb
