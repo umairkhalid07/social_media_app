@@ -1,18 +1,18 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: brainx_media
+    databaseName: brainx_media_production
+    user: brainx_media
 
 services:
   - type: web
-    name: mysite
+    name: brainx_media
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: brainx_media_production
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
