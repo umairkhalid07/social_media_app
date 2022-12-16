@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: brainx_media_production
-  username: brainx_media
-  password: <%= ENV["BRAINX_MEDIA_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
