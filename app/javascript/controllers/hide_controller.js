@@ -2,15 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = { userid: String}
   connect() {
-    console.log("Connected to hide controller")
+    const currentUserId = document.getElementById("current_user_id").dataset.userId
+    const userId = this.data.get("useridValue")
 
-    const current_user_id = document.getElementById("current_user_id").dataset.userId
-    const user_id = this.data.get("useridValue")
-
-    if (current_user_id === user_id) {
-      this.element.style.display = ""
+    if (currentUserId === userId) {
+      this.element.classList.add("d-block")
+      this.element.classList.remove("d-none")
     } else {
-      this.element.style.display = "none"
+      this.element.classList.add("d-none")
+      this.element.classList.remove("d-block")
     }
   }
 }

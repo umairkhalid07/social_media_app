@@ -6,8 +6,8 @@ class Comment < ApplicationRecord
 
   default_scope { order(created_at: :asc) }
 
-  after_create_commit { broadcast_append_to "posts", partial: "comments/comment", locals: { comment: self } }
-  after_update_commit { broadcast_replace_to "posts", partial: "comments/comment", locals: { comment: self } }
-  after_destroy_commit { broadcast_remove_to "posts", target: "comment_#{self.id}" }
+  after_create_commit { broadcast_prepend_to "comments_post_#{self.post.id }", partial: "comments/comment", locals: { post: self.post, comment: self } }
+  after_update_commit { broadcast_replace_to "comments_post_#{self.post.id }", partial: "comments/comment", locals: { post: self.post, comment: self } }
+  after_destroy_commit { broadcast_remove_to "comments_post_#{self.post.id }", target: "comment_#{self.id}" }
 
 end

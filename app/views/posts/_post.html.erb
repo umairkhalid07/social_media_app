@@ -1,20 +1,15 @@
 <%= turbo_frame_tag dom_id(post) do %>
   <div class="card m-5">
     <div class="card-body p-4">
-
       <div>
         <h5 class="card-title d-inline fw-bold my-4 fs-3"><%= post.user.name %></h5>
-        <p class="card-text d-inline float-end fst-italic fs-6 text-secondary"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
-
-        <hr>
+        <p class="card-text d-inline float-end fst-italic fs-6 text-secondary"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p><hr>
 
         <p class="card-text my-4 fs-4"><%= post.text %></p>
         <% if post.image.attached? %>
           <div class="my-4"><%= image_tag post.image, width: "40%", height: "40%" %></div>
         <% end %>
-      </div>
-
-      <hr>
+      </div><hr>
 
       <div class="mt-4">
         <div class="upvotes my-4 d-inline me-5">
@@ -38,17 +33,15 @@
         <div class="d-inline me-2 float-end">
           <div data-controller="hide" data-action="hide#connect" data-hide-userid-value="<%= post.user.id %>">
             <%= link_to "Edit Post", edit_post_path(post.id), :class => "small-button me-2 bg-primary text-light" %>
-            <%= link_to "Delete Post", post_path(post.id), data: { turbo: true, "turbo-method": :delete }, :class => "small-button bg-danger text-light" %>
+            <%= link_to "Delete Post", post_path(post.id), data: { turbo: true, "turbo-method": :delete, turbo_confirm: "Are you sure?" }, :class => "small-button bg-danger text-light" %>
           </div>
         </div>
-      </div>
-
-      <hr>
+      </div><hr>
 
       <div class="mt-4">
         <h5 class="card-title d-inline fw-bold my-4">Comments Section</h5><br>
-        <%= turbo_stream_from "comments_#{post.id}" %>
-        <%= turbo_frame_tag "comments_#{post.id}" do %>
+        <%= turbo_stream_from "comments_post_#{post.id}" %>
+        <%= turbo_frame_tag "comments_post_#{post.id}" do %>
           <%= render post.comments %>
         <% end %>
         <hr>
@@ -60,10 +53,8 @@
             <div class="d-inline mb-0 pb-0"><%= form.submit "Comment", class: "p-2 small-button text-light" %></div>
           <% end %>
         </div>
-
       </div>
     </div>
   </div>
-
 <% end %>
 

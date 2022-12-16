@@ -1,4 +1,5 @@
 class FriendsController < ApplicationController
+  include ApplicationHelper
   def index
     @friends = current_user.friends.includes(:conversations)
     @conversations = current_user.conversations
@@ -6,6 +7,8 @@ class FriendsController < ApplicationController
 
   def destroy
     @friend = current_user.friends.find(params[:id])
+    @conversation = find_conversation(current_user,  @friend)
+    @conversation.destroy
     current_user.remove_friend(current_user, @friend)
 
 

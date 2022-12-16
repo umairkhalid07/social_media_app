@@ -3,21 +3,18 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new(comment_params)
-    @comment.save!
-    head 200
+    @comment.save ? head 200 : flash.now[:notice] => "Comment Not Created"
   end
 
   def edit
   end
 
   def update
-    @comment.update(comment_params)
-    head 200
+    @comment.update(comment_params) ? head 200 : flash.now[:notice] => "Comment Not Updated"
   end
 
   def destroy
-    @comment.destroy!
-    head 200
+    @comment.destroy ? head 200 : flash.now[:notice] => "Comment Not Destroyed"
   end
 
   private

@@ -4,7 +4,7 @@
       <div>
         <%= message.body %><br>
         <div class="fst-6 fst-italic d-inline">Sent at <%= message.created_at.strftime("%I:%M %p, %d/%m/%Y") %></div>
-        <%= link_to "<i class='fa-solid fa-trash ms-1 text-danger'></i>".html_safe, conversation_message_path(message.conversation.id, message.id), data: { "turbo-method": :delete }, class: "no-deco", id: "message-delete" %>
+        <%= link_to "<i class='fa-solid fa-trash ms-1 text-danger'></i>".html_safe, conversation_message_path(message.conversation.id, message.id), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "no-deco", id: "message-delete" %>
       </div>
     </div>
   </div>

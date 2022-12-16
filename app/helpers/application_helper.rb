@@ -12,10 +12,7 @@ module ApplicationHelper
   end
 
   def find_conversation(user1, user2)
-    conversation = Conversation.find_by(sender_id: user1.id, receiver_id: user2.id)
-    if conversation.nil?
-      conversation = Conversation.find_by(sender_id: user2.id, receiver_id: user1.id)
-    end
-    return conversation
+    conversation = Conversation.where(sender_id: user1.id, receiver_id: user2.id).or(Conversation.where(sender_id: user2.id, receiver_id: user1.id))
+    conversation.first
   end
 end

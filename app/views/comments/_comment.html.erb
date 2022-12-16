@@ -8,7 +8,7 @@
       <div>
         <%= link_to "Edit", edit_post_comment_path(comment.post.id, comment.id), :class => "no-deco d-inline text-danger" %>
         <span>|</span>
-        <%= link_to "Delete", post_comment_path(comment.post.id, comment.id), data: { "turbo-method": :delete }, :class => "no-deco d-inline text-danger" %>
+        <%= link_to "Delete", post_comment_path(comment.post.id, comment.id), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, :class => "no-deco d-inline text-danger" %>
       </div>
     </div>
   </div>
