@@ -1,12 +1,13 @@
+<div class="display-5 text-center fw-bold py-3 post-heading">Log In</div>
+
 <div class="form-signin text-center mt-5">
   <div class="form">
-    <h1 class="h1 my-5 fw-bold">Log In</h1>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name,html: {'data-turbo' => false}, url: session_path(resource_name)) do |f| %>
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :email %><br/></div>
-        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:email).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -14,14 +15,14 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :password %><br /></div>
-        <div class="my-2"><%= f.password_field :password, autocomplete: "current-password", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.password_field :password, autocomplete: "current-password", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:password).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Log In", :class => 'btn-lg w-100 my-2' %>
+        <%= f.submit "Log In",'data-turbo-stream': false, :class => 'btn-lg w-100 my-2' %>
       </div>
     <% end %>
     <%= render "devise/shared/links" %>

@@ -1,0 +1,7 @@
+<%= turbo_stream.update("likes") do %>
+<%= render "reactions/like", post: @post %>
+<% end %>
+
+<%= turbo_stream.update("dislikes") do %>
+<%= render "reactions/dislike", post: @post %>
+<% end %>

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_posts, only: [:edit, :update, :destroy]
   def index
-    @posts = Post.all
+    @posts = Post.includes(:comments, :reactions)
   end
 
   def new
@@ -10,10 +10,16 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
-    if @post.save
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
+    @post.save
+
+    respond_to do |format|
+      if @post.persisted?
+        format.html { redirect_to root_path, notice: "Post Created" }
+        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Created" }
+      else
+        format.html { render :new, notice: "Post Not Created", status: :unprocessable_entity }
+        format.turbo_stream { render :new, flash.now[:notice] => "Post Not Created", status: :unprocessable_entity }
+      end
     end
   end
 
@@ -21,16 +27,19 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to root_path
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to root_path, notice: "Post Updated" }
+        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Updated" }
+      else
+        format.html { render :edit, notice: "Post Not Updated", status: :unprocessable_entity }
+        format.turbo_stream { render :edit, flash.now[:notice] => "Post Not Updated", status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    @post.destroy
-    redirect_to root_path
+    @post.destroy ? head 200 : flash.now[:notice] => "Post Not Deleted"
   end
 
   private
@@ -39,7 +48,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:text, :image)
   end
 
-  def set_post
+  def set_posts
     @post = current_user.posts.find(params[:id])
   end
 end

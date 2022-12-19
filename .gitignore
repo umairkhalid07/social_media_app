@@ -8,8 +8,6 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
 !/log/.keep
 !/tmp/.keep
 
@@ -35,4 +33,10 @@
 
 /node_modules
 
-.idea
+.idea/
+lib/tasks/fly.rake
+log/development.log
+tmp/cache/
+tmp/development_secret.txt
+tmp/letter_opener/
+tmp/restart.txt

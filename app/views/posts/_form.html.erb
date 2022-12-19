@@ -1,11 +1,11 @@
 <div class="form-post text-start my-5">
   <div class="form">
 
-    <%= form_with model: post do |form| %>
+    <%= form_with model: [post] do |form| %>
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= form.label :text %></div>
-        <div class="my-2"><%= form.text_area :text, size: "1x8", autofocus: true, :class => 'form-control' %></div>
+        <div class="my-2"><%= form.text_area :text, size: "1x8", autofocus: true, :class => 'form-control shadow-none' %></div>
         <% form.object.errors.full_messages_for(:name).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>

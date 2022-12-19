@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
@@ -6,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :friends
   resources :users
+  resources :conversations do
+    resources :messages
+  end
   resources :posts do
     resources :reactions do
       collection do
@@ -13,8 +18,8 @@ Rails.application.routes.draw do
         get :dislike
       end
     end
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
-  resources :users, only: [:index, :show]
 
   resources :friend_requests do
     collection do

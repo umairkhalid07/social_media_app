@@ -1,12 +1,13 @@
+<div class="display-5 text-center fw-bold py-3 post-heading">Forgot Your Password ?</div>
+
 <div class="form-signin text-center mt-5">
   <div class="form">
-    <h1 class="h2 my-5 fw-bold">Forgot your password ?</h1>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :email %><br/></div>
-        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:email).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>

@@ -1,20 +1,23 @@
-<div class="display-5 my-5 text-center">All Users</div>
+<div class="display-5 text-center fw-bold py-3 post-heading">Users List</div>
 
-<div class="container my-5">
-  <% @users.each do |user| %>
-    <div class="user-entry">
-      <div class="col-2 h4"><%= image_tag user.profile_photo, width: "30%", height: "30%" %></div>
-      <div class="col-4 h4 my-3"><%= user.name %></div>
-      <div class="col-3 h4 my-3"><%= user.email %></div>
-      <% if current_user.friends.include?(user) %>
-        <div class="col-3"><a class="small-button mx-5 text-light" href="/">Chat<i class="fa-solid fa-message ms-3"></i></a></div>
-      <% elsif current_user.pending_friends.include?(user) %>
-        <div class="col-3"><%= link_to "Sent Friend Request", root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
-      <% elsif user == current_user %>
-        <div class="col-3"><%= link_to "You", root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
-      <% else %>
-        <div class="col-3"><%= link_to "Add Friend", create_friend_request_friend_requests_path(user_id: user.id), class: "small-button mx-5 bg-warning text-dark" %></div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<%= turbo_stream_from "users" %>
+<%= turbo_frame_tag "users" do %>
+  <div class="container my-5">
+    <% @users.each do |user| %>
+      <div class="user-entry">
+        <div class="col-2 h4"><%= image_tag user.profile_photo, width: "30%", height: "30%" %></div>
+        <div class="col-4 h4 my-3"><%= user.name %></div>
+        <div class="col-3 h4 my-3"><%= user.email %></div>
+        <% if current_user.friends.include?(user) %>
+          <div class="col-3"><%=link_to "Friends <i class='mx-2 fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-success text-light disabled" %></div>
+        <% elsif current_user.pending_friends.include?(user) %>
+          <div class="col-3"><%= link_to "Sent Request <i class='fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
+        <% elsif user == current_user %>
+          <div class="col-3"><%= link_to "You <i class='fa-solid fa-user-large ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
+        <% else %>
+          <div class="col-3"><%= link_to "Add Friend <i class='fa-solid fa-user-plus ms-3'></i>".html_safe, create_friend_request_friend_requests_path(user_id: user.id), class: "small-button mx-5 bg-warning text-dark" %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

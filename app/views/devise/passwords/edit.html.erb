@@ -1,6 +1,7 @@
+<div class="display-5 text-center fw-bold py-3 post-heading">Password Reset</div>
+
 <div class="form-signin text-center mt-5">
   <div class="form">
-    <h1 class="h2 my-5 fw-bold">Change your password</h1>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
@@ -10,7 +11,7 @@
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em><br />
         <% end %>
-        <div class="my-2"><%= f.password_field :password, autofocus: true, autocomplete: "new-password", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.password_field :password, autofocus: true, autocomplete: "new-password", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:password).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
@@ -18,7 +19,7 @@
 
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :password_confirmation, "Confirm new password" %><br/></div>
-        <div class="my-2"><%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %></div>
+        <div class="my-2"><%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:password_confirmation).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>

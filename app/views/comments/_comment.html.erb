@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(comment) do %>
+  <div class="comment-box my-2">
+    <p class="card-text d-inline fw-bold my-3 fs-5"><%= comment.user.name %></p><br>
+    <p class="card-text d-inline my-3 fs-5 "><%= comment.text %></p><br>
+    <p class="card-text d-inline fst-5 fst-italic text-secondary my-3"><%= comment.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
+    <br>
+    <div data-controller="hide" data-action="hide#connect" data-hide-userid-value="<%= comment.user.id %>">
+      <div>
+        <%= link_to "Edit", edit_post_comment_path(comment.post.id, comment.id), :class => "no-deco d-inline text-danger" %>
+        <span>|</span>
+        <%= link_to "Delete", post_comment_path(comment.post.id, comment.id), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, :class => "no-deco d-inline text-danger" %>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>

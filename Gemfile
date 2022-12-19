@@ -76,5 +76,5 @@ end
 # Other gems added
 
 gem 'devise'
-gem "image_processing", ">= 1.2"
+gem "image_processing"
 gem "font-awesome-sass"

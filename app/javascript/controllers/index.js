@@ -3,3 +3,12 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+
+import HideController from "./hide_controller"
+application.register("hide", HideController)
+
+import ResetFormController from "./reset_form_controller"
+application.register("reset-form", ResetFormController)
+
+import StyleMessageController from "./style_message_controller"
+application.register("style-message", StyleMessageController)

@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-  <div class=""><%= link_to "Home", root_path, class: "nav-button mt-3" %></div>
-  <div class=""><%= link_to "New Post", new_post_path(current_user), class: "nav-button" %></div>
-  <div class=""><%= link_to "Users", users_path, class: "nav-button" %></div>
-  <div class=""><%= link_to "Friends", friends_path, class: "nav-button" %></div>
-  <div class=""><%= link_to "Friend Requests", friend_requests_path, class: "nav-button" %></div>
-  <div class=""><%= link_to "User Profile", current_user, class: "nav-button" %></div>
-  <div class=""><%= link_to "Sign Out", destroy_user_session_path, 'data-turbo-method': :delete, class: "nav-button" %></div>
+  <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-house me-2'></i> Home".html_safe, root_path, class: "nav-button" %></div>
+  <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-clipboard me-2'></i> New Post".html_safe, new_post_path(current_user), class: "nav-button" %></div>
+  <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-users me-2'></i> Users".html_safe, users_path, class: "nav-button" %></div>
+  <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-user-group me-2'></i> Friends".html_safe, friends_path, class: "nav-button" %></div>
+  <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-user-plus me-2'></i> Friend Requests".html_safe, friend_requests_path, class: "nav-button" %></div>
+  <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-address-card me-2'></i> User Profile".html_safe, current_user, class: "nav-button" %></div>
+  <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-right-from-bracket me-2'></i> Sign Out".html_safe, destroy_user_session_path, 'data-turbo-method': :delete, class: "nav-button" %></div>
 <% end %>

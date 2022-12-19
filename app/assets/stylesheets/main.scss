@@ -1,14 +1,15 @@
-$base-color: #00a3e8;
+$base-color: #0093d3;
+$secondary-color: #e0e0e0;
 $dark-color: #212529;
 $light-color: #ffffff;
 $error-color: #ff0000;
 $success-color: #2fff2f;
 
-body {
-  font-family: "Roboto Thin", serif
+html, body {
+  font-family: "Helvetica Neue", serif
 }
 
-.bg-primary {
+.bg, .bg-primary {
   background-color: $base-color !important;
 }
 
@@ -47,7 +48,7 @@ body {
   font-style: italic;
 }
 
-.position-sticky {
+.sticky-class {
   overflow: hidden !important;
   position: sticky !important;
   z-index: 100 !important;
@@ -62,6 +63,12 @@ body {
   margin-left: 20% !important;
   margin-right: 20% !important;
 }
+.form-comment {
+  width: 91%;
+}
+.form-message {
+  width: 88%;
+}
 
 .link {
   font-size: 16px;
@@ -71,7 +78,6 @@ body {
 .link:hover {
   color: $base-color;
 }
-
 .disabled {
   pointer-events: none;
   cursor: default;
@@ -99,7 +105,9 @@ body {
   padding: 10px 25px;
   background-color: $base-color;
   color: $dark-color;
+  border: none;
   border-radius: 6px;
+  box-shadow: none;
 }
 .small-button:hover {
   color: $dark-color;
@@ -120,30 +128,78 @@ body {
 
 .upvotes {
   text-align: center;
-  width: 15%;
-  padding: 10px 10px 1px 1px;
+  width: 30%;
+  padding: 15px 1px;
 }
 
 .no-deco {
   text-decoration: none;
-.nav-bar {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
-.nav-button {
-  display: flex;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: 10px solid black;
-  background-color: purple;
-  color: white;
-}
-.nav-button:hover {
-  color: black;
 }
 
-.main-logo {
-  transform: rotate(90deg);
+.card {
+  border-radius: 0;
+}
+
+.comment-box {
+  display: inline-block;
+  background-color: $secondary-color;
+  color: $dark-color;
+  padding: 10px 60px 10px 15px;
+  margin: 10px 5px;
+  border-radius: 15px;
+}
+
+.chat-window {
+  border: 1px solid $secondary-color;
+  margin: 0 300px;
+  padding: 10px 0;
+  height: 50vh;
+  overflow-y: scroll;
+  max-width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.border-window {
+  border: 1px solid $secondary-color;
+  padding: 10px 0;
+  margin: 0 300px;
+}
+
+.sent-message {
+  display: inline-block;
+  background-color: $base-color;
+  color: $light-color;
+  padding: 10px 20px;
+  margin: 20px 10px;
+  font-size: 1.2em;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.sent-message-container {
+  text-align: right;
+}
+
+.received-message {
+  display: inline-block;
+  background-color: $secondary-color;
+  color: black;
+  padding: 10px 20px;
+  margin: 10px 20px;
+  font-size: 1.3em;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.received-message-container {
+  text-align: left;
+}
+
+.fst-5 {
+  font-size: 0.8em;
+}
+
+.fst-6 {
+  font-size: 0.6em;
+}
