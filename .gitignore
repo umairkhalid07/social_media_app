@@ -33,18 +33,10 @@
 
 /node_modules
 
-.idea
-/app/assets/images/*
-/bin/*
-/lib/*
-/node_modules/*
-/public/*
-/log/*
-/tmp/*
-/vendor/*
-/application.css
-/package.json
-/Procfile.dev
-/yarn.lock
-/.gitignore
-/db/schema.rb
+.idea/
+lib/tasks/fly.rake
+log/development.log
+tmp/cache/
+tmp/development_secret.txt
+tmp/letter_opener/
+tmp/restart.txt
