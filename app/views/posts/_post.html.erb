@@ -17,7 +17,7 @@
             <i class="fa-solid fa-thumbs-up fa-2x d-inline mx-2 text-success"></i>
           <% end %>
 
-          <div class="d-inline" id='likes'>
+          <div class="d-inline" id="<%= 'likes_' + dom_id(post) %>">
             <%= render "reactions/like", post: post %>
           </div>
 
@@ -25,7 +25,7 @@
             <i class="fa-solid fa-thumbs-down fa-2x d-inline mx-2 text-danger"></i>
           <% end %>
 
-          <div class="d-inline" id='dislikes'>
+          <div class="d-inline" id="<%= 'dislikes_' + dom_id(post) %>">
             <%= render "reactions/dislike", post: post %>
           </div>
         </div>
@@ -40,9 +40,9 @@
 
       <div class="mt-4">
         <h5 class="card-title d-inline fw-bold my-4">Comments Section</h5><br>
-        <%= turbo_stream_from "comments_post_#{post.id}" %>
-        <%= turbo_frame_tag "comments_post_#{post.id}" do %>
-          <%= render post.comments %>
+        <%= turbo_stream_from "comments" %>
+        <%= turbo_frame_tag "comments_#{dom_id(post)}" do %>
+          <div><%= render post.comments %></div>
         <% end %>
         <hr>
         <p class="card-text d-inline fw-bold my-4">Add a comment</p>
