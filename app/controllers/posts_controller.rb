@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy ? head 200 : flash.now[:notice] => "Post Not Deleted"
+    if @post.destroy; head 200 else flash.now[:notice] => "Post Not Deleted" end
   end
 
   private
