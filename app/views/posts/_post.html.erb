@@ -2,10 +2,11 @@
   <div class="card m-5">
     <div class="card-body p-4">
       <div>
-        <h5 class="card-title d-inline fw-bold my-4 fs-3"><%= post.user.name %></h5>
+        <%= image_tag post.user.profile_photo, width: "4%", height: "4%", class: "align-middle me-2" %>
+        <h5 class=" d-inline align-middle card-title d-inline fw-bold my-4 fs-3"><%= post.user.name %></h5>
         <p class="card-text d-inline float-end fst-italic fs-6 text-secondary"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p><hr>
 
-        <p class="card-text my-4 fs-4"><%= post.text %></p>
+        <p class="card-text my-4 fs-4"><%= post.content %></p>
         <% if post.image.attached? %>
           <div class="my-4"><%= image_tag post.image, width: "40%", height: "40%" %></div>
         <% end %>
@@ -40,7 +41,7 @@
 
       <div class="mt-4">
         <h5 class="card-title d-inline fw-bold my-4">Comments Section</h5><br>
-        <%= turbo_stream_from "comments" %>
+        <%= turbo_stream_from "comments_#{dom_id(post)}" %>
         <%= turbo_frame_tag "comments_#{dom_id(post)}" do %>
           <div><%= render post.comments %></div>
         <% end %>

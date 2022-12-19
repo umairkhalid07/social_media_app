@@ -4,19 +4,13 @@
     <%= form_with model: [post] do |form| %>
 
       <div class="field form-floating">
-        <div class="fw-bold my-2"><%= form.label :text %></div>
-        <div class="my-2"><%= form.text_area :text, size: "1x8", autofocus: true, :class => 'form-control shadow-none' %></div>
-        <% form.object.errors.full_messages_for(:name).each do |message| %>
-          <div class="error-messages"><%= message %></div>
-        <% end %>
+        <div class="fw-bold my-2"><%= form.label :content %></div>
+        <div class="my-2"><%= form.rich_text_area :content, size: "1x10", autofocus: true, :class => 'form-control shadow-none p-2 h-100' %></div>
       </div>
 
       <div class="field form-floating">
-        <div class="fw-bold my-2"><%= form.label "Optional Image" %></div>
+        <div class="fw-bold my-2"><%= form.label "Picture Attachment" %></div>
         <div class="my-2"><%= form.file_field :image, required: false, direct_upload: true, accept: "image/png,image/jpg,image/jpeg" %></div>
-        <% form.object.errors.full_messages_for(:image).each do |message| %>
-          <div class="error"><%= message %></div>
-        <% end %>
       </div>
 
       <div class="actions">

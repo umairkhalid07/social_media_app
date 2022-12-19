@@ -240,7 +240,7 @@ DEPENDENCIES
   debug
   devise
   font-awesome-sass
-  image_processing
+  image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
   letter_opener

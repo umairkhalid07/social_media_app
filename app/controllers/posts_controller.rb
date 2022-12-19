@@ -11,15 +11,12 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.create(post_params)
     @post.save
-
-    respond_to do |format|
-      if @post.persisted?
-        format.html { redirect_to root_path, notice: "Post Created" }
-        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Created" }
-      else
-        format.html { render :new, notice: "Post Not Created", status: :unprocessable_entity }
-        format.turbo_stream { render :new, flash.now[:notice] => "Post Not Created", status: :unprocessable_entity }
-      end
+    if @post.persisted?
+      flash.now[:success] = "Post created !"
+      redirect_to root_path
+    else
+      flash.now[:error] = "Post not created, please try again"
+      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
     end
   end
 
@@ -27,25 +24,29 @@ class PostsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to root_path, notice: "Post Updated" }
-        format.turbo_stream { redirect_to root_path, flash.now[:notice] => "Post Updated" }
-      else
-        format.html { render :edit, notice: "Post Not Updated", status: :unprocessable_entity }
-        format.turbo_stream { render :edit, flash.now[:notice] => "Post Not Updated", status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      flash.now[:success] = "Post updated !"
+      redirect_to root_path
+    else
+      flash.now[:error] = "Post not updated, please try again."
+      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
     end
   end
 
   def destroy
-    if @post.destroy; head 200 else flash.now[:notice] => "Post Not Deleted" end
+    if @post.destroy
+      flash.now[:success] = "Post deleted !"
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    else
+      flash.now[:error] = "Post not deleted, please try again."
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:text, :image)
+    params.require(:post).permit(:content, :image)
   end
 
   def set_posts

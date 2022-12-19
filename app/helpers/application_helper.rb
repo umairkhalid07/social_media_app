@@ -15,4 +15,12 @@ module ApplicationHelper
     conversation = Conversation.where(sender_id: user1.id, receiver_id: user2.id).or(Conversation.where(sender_id: user2.id, receiver_id: user1.id))
     conversation.first
   end
+
+  def current_path(path)
+    "current" if current_page?(path)
+  end
+
+  def show_turbo_notice
+    turbo_stream.prepend "flash", partial: "layouts/flash"
+  end
 end

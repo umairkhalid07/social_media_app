@@ -1,9 +1,9 @@
-$base-color: #0093d3;
+$base-color: #0097dc;
 $secondary-color: #e0e0e0;
 $dark-color: #212529;
 $light-color: #ffffff;
-$error-color: #ff0000;
-$success-color: #2fff2f;
+$error-color: #c90000;
+$success-color: #00c500;
 
 html, body {
   font-family: "Helvetica Neue", serif
@@ -202,4 +202,45 @@ html, body {
 
 .fst-6 {
   font-size: 0.8em;
+}
+
+.current {
+  color: $dark-color;
+  font-weight: bolder;
+}
+
+.notifications-success {
+  font-weight: bold;
+  max-width: 100%;
+  width: max-content;
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  bottom: 30px;
+  left: 30px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  background-color: $success-color;
+  color: $light-color;
+  animation: fade 5s both;
+}
+.notifications-error {
+  font-weight: bold;
+  max-width: 100%;
+  width: max-content;
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  bottom: 30px;
+  left: 30px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  background-color: $error-color;
+  color: $light-color;
+  animation: fade 5s both;
+}
+@keyframes fade {
+  0% {opacity: 1;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
 }

@@ -7,6 +7,9 @@ import { application } from "./application"
 import HideController from "./hide_controller"
 application.register("hide", HideController)
 
+import RemovalsController from "./removals_controller"
+application.register("removals", RemovalsController)
+
 import ResetFormController from "./reset_form_controller"
 application.register("reset-form", ResetFormController)
 

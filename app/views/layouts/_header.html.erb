@@ -1,22 +1,26 @@
 <div class="row m-0 p-0">
-  <div class="col-4 m-0 p-0">
-    <%= image_tag("Brainx_logo.png", alt: "logo") %>
+  <div class="col-3 m-0 p-0">
+    <%= image_tag("Brainx_logo.png", alt: "logo", style: "height: 100%; width: 100%;", class: "m-0 p-0") %>
   </div>
-  <div class="col-8 m-0 p-0">
-    <h1 class="display-1 fw-bold text-center bg py-3 m-0 text-light"><div class="text-dark d-inline">BRAINX</div> MEDIA</h1>
+  <div class="col-9 m-0 p-0">
+    <h1 class="display-2 fw-bold text-center bg py-2 m-0 text-light">
+      <%= image_tag("Brainx_logo_small.png", alt: "logo", style: "height: 5%; width: 5%;", class: "m-0 p-0 align-middle") %>
+      <div class="d-inline align-middle text-dark ">BRAINX</div>
+      <div class="d-inline align-middle text-white">MEDIA</div>
+    </h1>
   </div>
 </div>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="container-fluid">
-    <div class="collapse navbar-collapse center-nav p-1">
-      <ul class="navbar-nav">
-        .<div class="fs-6 fst-italic text-light">
+    <div class="collapse navbar-collapse center-nav p-0">
+      <ul class="navbar-nav w-100">
+<!--        <div id="flash"><%#= render "layouts/flash" %></div>-->
+        .<div class="w-100">
           <% if user_signed_in? %>
-            <p>Signed in as <%= current_user.name %></p>
+            <p class="m-0 fs-6 fst-italic text-light align-middle text-end"><i class="d-inline fa-solid fa-user-large me-2"></i> Signed in as <%= current_user.name %></p>
           <% end %>
         </div>
-        <div id="flash"><%= render "layouts/flash" %></div>
       </ul>
     </div>
   </div>

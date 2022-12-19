@@ -3,18 +3,36 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new(comment_params)
-    if @comment.save; head 200 else flash.now[:notice] => "Comment Not Created" end
+    if @comment.save
+      flash.now[:success] = "Comment posted !"
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    else
+      flash.now[:error] = "Comment not posted, please try again."
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    end
   end
 
   def edit
   end
 
   def update
-    if @comment.update(comment_params); head 200 else flash.now[:notice] => "Comment Not Updated" end
+    if @comment.update(comment_params)
+      flash.now[:success] => "Comment updated !"
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    else
+      flash.now[:error] => "Comment Not updated, please try again."
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    end
   end
 
   def destroy
-    if @comment.destroy; head 200 else flash.now[:notice] => "Comment Not Destroyed" end
+    if @comment.destroy
+      flash.now[:success] = "Comment deleted !"
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    else
+      flash.now[:error] = "Comment not deleted, please try again."
+      render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
+    end
   end
 
   private

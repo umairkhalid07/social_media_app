@@ -28,7 +28,9 @@
           <%= yield %>
         </div>
 
-        <%= render_flash_messages %>
+        <turbo-frame id="flash">
+          <%= render "layouts/flash" %>
+        </turbo-frame>
       </div>
     </div>
   </body>
