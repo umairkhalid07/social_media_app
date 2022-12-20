@@ -1,0 +1,127 @@
+@import 'colors';
+
+.bio {
+  font-size: 16px;
+  border: 1px dashed $base-color;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.user-entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $dark-color;
+  padding: 15px 20px;
+}
+
+.post-heading {
+  border-bottom: 5px solid $dark-color;
+}
+
+.upvotes {
+  text-align: center;
+  width: 30%;
+  padding: 15px 1px;
+}
+
+.error-messages {
+  text-align: left;
+  font-size: 12px;
+  padding: 2px;
+  color: $error-color;
+  font-style: italic;
+}
+
+.comment-box {
+  display: inline-block;
+  background-color: $secondary-color;
+  color: $dark-color;
+  padding: 10px 60px 10px 15px;
+  margin: 10px 5px;
+  border-radius: 15px;
+}
+
+.chat-window {
+  border: 1px solid $secondary-color;
+  margin: 0 300px;
+  padding: 10px 0;
+  height: 50vh;
+  overflow-y: scroll;
+  max-width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.border-window {
+  border: 1px solid $secondary-color;
+  padding: 10px 0;
+  margin: 0 300px;
+}
+
+.sent-message {
+  display: inline-block;
+  background-color: $base-color;
+  color: $light-color;
+  padding: 10px 20px;
+  margin: 20px 10px;
+  font-size: 1.2em;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.sent-message-container {
+  text-align: right;
+}
+
+.received-message {
+  display: inline-block;
+  background-color: $secondary-color;
+  color: black;
+  padding: 10px 20px;
+  margin: 10px 20px;
+  font-size: 1.3em;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.received-message-container {
+  text-align: left;
+}
+
+.notifications-success {
+  font-weight: bold;
+  max-width: 100%;
+  width: max-content;
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  bottom: 30px;
+  left: 30px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  background-color: $success-color;
+  color: $light-color;
+  animation: fade 5s both;
+}
+.notifications-error {
+  font-weight: bold;
+  max-width: 100%;
+  width: max-content;
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  bottom: 30px;
+  left: 30px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  background-color: $error-color;
+  color: $light-color;
+  animation: fade 5s both;
+}
+@keyframes fade {
+  0% {opacity: 1;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
