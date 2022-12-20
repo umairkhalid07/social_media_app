@@ -7,6 +7,6 @@ class ReactionsController < ApplicationController
     else
       reaction.update(reaction_type: params[:reaction_type])
     end
-    flash.now[:notice] = "Reacted To Post"
+    flash.now[:notice] = "Reacted to post !"
   end
 end

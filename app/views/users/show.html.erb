@@ -1,33 +1,49 @@
-<div>
-  <div class="display-5 text-center fw-bold py-3 post-heading">User Profile</div>
+<div class="display-5 text-center fw-bold py-3 post-heading">User Profile</div>
 
-  <% if @user.profile_photo.attached? %>
-    <div class="text-center"><%= image_tag @user.profile_photo, width: "10%", height: "10%" %></div>
-  <% end %>
+<div class="p-3">
+  <div class="row">
+    <div class="col-2">
+      <% if @user.profile_photo.attached? %>
+        <%= image_tag @user.profile_photo, width: "100%", height: "100%" %>
+      <% end %>
+    </div>
 
-  <div class="h2 text-center">
-    <%= @user.name %>
+    <div class="col-3 d-flex align-items-center">
+      <div class="h1 fw-bold"><%= @user.name %></div>
+    </div>
+
+    <div class="col-5"></div>
+
+    <div class="col-2 d-flex align-items-end">
+      <%= link_to "Edit Profile", edit_user_registration_path, :class => "small-button" %>
+    </div>
   </div>
 
-  <div class="h5 text-center">
-    Email: <%= @user.email %>
+  <div class="border border-1 border-dark my-3"></div>
+
+  <div class="row">
+    <div class="col-10">
+      <div class="h4 px-5 py-2"><span class="fw-bold">About: </span><%= @user.bio %></div>
+    </div>
   </div>
 
-  <div class="h5 text-center">
-    Contact Number: <%= @user.phone_number %>
+  <div class="row mt-3 px-5">
+    <div class="col-4 border border-1 border-dark p-3">
+      <div class="h4"><span class="fw-bold">Email: </span><%= @user.email %></div>
+    </div>
+
+    <div class="col-4 border border-1 border-dark p-3">
+      <div class="h4"><span class="fw-bold">Contact Number: </span><%= @user.phone_number %></div>
+    </div>
   </div>
 
-  <div class="h5 text-center">
-    <%= @user.location %>
-  </div>
+  <div class="row pb-0 px-5">
+    <div class="col-4 border border-1 border-dark p-3">
+      <div class="h4"><span class="fw-bold">Location: </span><%= @user.location %></div>
+    </div>
 
-  <div class="h5 text-center">
-    Birthday: <%= @user.birthday_at.strftime("%d/%m/%Y") %>
+    <div class="col-4 border border-1 border-dark p-3">
+      <div class="h4"><span class="fw-bold">Birthday: </span><%= @user.birthday_at.strftime("%d/%m/%Y") %></div>
+    </div>
   </div>
-
-  <div class="bio text-center my-5 p-3">
-    <%= @user.bio %>
-  </div>
-
-  <div class="text-center"><%= link_to "Edit Profile", edit_user_registration_path, :class => "small-button" %></div>
 </div>
