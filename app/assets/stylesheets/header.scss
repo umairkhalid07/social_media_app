@@ -1,0 +1,56 @@
+@import 'colors';
+
+html, body {
+  font-family: "Helvetica Neue", serif
+}
+
+.bg-primary {
+  background-color: $base-color !important;
+}
+
+.logo {
+  background-color: $light-color;
+  border: 1px solid $light-color;
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.nav-button {
+  display: flex;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: 10px solid $dark-color;
+  background-color: $base-color;
+  color: $light-color;
+  border-radius: 25px;
+}
+.nav-button:hover {
+  color: $dark-color;
+}
+
+.sticky-class {
+  overflow: hidden !important;
+  position: sticky !important;
+  z-index: 100 !important;
+  top: 0;
+}
+
+.current {
+  color: $dark-color;
+  font-weight: bolder;
+}
+
+.fst-5 {
+  font-size: 0.8em;
+}
+
+.fst-6 {
+  font-size: 0.8em;
+}
