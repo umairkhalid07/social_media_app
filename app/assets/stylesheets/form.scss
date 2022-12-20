@@ -1,0 +1,55 @@
+@import 'colors';
+
+.form-signin {
+  margin-left: 39% !important;
+  margin-right: 39% !important;
+}
+.form-post {
+  margin-left: 20% !important;
+  margin-right: 20% !important;
+}
+.form-comment {
+  width: 91%;
+}
+.form-message {
+  width: 88%;
+}
+
+.link {
+  font-size: 16px;
+  color: $dark-color;
+  text-decoration: none;
+}
+.link:hover {
+  color: $base-color;
+}
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+.btn-lg {
+  background-color: $base-color;
+  color: $dark-color;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none
+}
+
+.small-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 25px;
+  background-color: $base-color;
+  color: $dark-color;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+}
+.small-button:hover {
+  color: $dark-color;
+}
+
+.no-deco {
+  text-decoration: none;
+}
