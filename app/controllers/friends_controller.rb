@@ -1,6 +1,6 @@
 class FriendsController < ApplicationController
   def index
-    @friends = current_user.friends.includes(:conversations)
+    @pagy, @friends = pagy(current_user.friends.includes(:conversations))
     @conversations = current_user.conversations
   end
 

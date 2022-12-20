@@ -1,0 +1,28 @@
+@import 'colors';
+
+.pagination {
+  --bs-pagination-padding-x: 0.75rem;
+  --bs-pagination-padding-y: 0.375rem;
+  --bs-pagination-font-size: 1rem;
+  --bs-pagination-color: #0097dc !important;
+  --bs-pagination-bg: #ffffff !important;
+  --bs-pagination-border-width: 1px;
+  --bs-pagination-border-color: #dee2e6;
+  --bs-pagination-border-radius: 0.375rem;
+  --bs-pagination-hover-color: var(--bs-link-hover-color);
+  --bs-pagination-hover-bg: #e9ecef;
+  --bs-pagination-hover-border-color: #dee2e6;
+  --bs-pagination-focus-color: var(--bs-link-hover-color);
+  --bs-pagination-focus-bg: #e9ecef;
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  --bs-pagination-active-color: #ffffff !important;
+  --bs-pagination-active-bg: #0097dc !important;
+  --bs-pagination-active-border-color: #0097dc !important;
+  --bs-pagination-disabled-color: #212529 !important;
+  --bs-pagination-disabled-bg: #e9ecef !important;
+  --bs-pagination-disabled-border-color: #e9ecef !important;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+

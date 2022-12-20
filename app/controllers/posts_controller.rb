@@ -1,8 +1,22 @@
 class PostsController < ApplicationController
   before_action :set_posts, only: [:edit, :update, :destroy]
   def index
-    @posts = Post.includes(:comments, :reactions)
+    @pagy, @posts = pagy(Post.includes(:comments, :reactions), items: 5)
   end
+
+  # def self.search(search)
+  #   .search(params[:search])
+  #   if search
+  #     result = Post.find_by(content: search)
+  #     if result
+  #       self.where(post_id: result)
+  #     else
+  #       Post.all
+  #     end
+  #   else
+  #     Post.all
+  #   end
+  # end
 
   def new
     @post = current_user.posts.new
@@ -46,7 +60,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:content, :image, :search)
   end
 
   def set_posts

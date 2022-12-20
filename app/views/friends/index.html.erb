@@ -1,15 +1,29 @@
 <div class="display-5 text-center fw-bold py-3 post-heading">Friends List</div>
 
-<div class="container my-5">
-  <% @friends.each do |friend| %>
-    <div class="user-entry">
-      <div class="col-2 h4"><%= image_tag friend.profile_photo, width: "30%", height: "30%" %></div>
-      <div class="col-3 h4 my-3"><%= friend.name %></div>
-      <div class="col-3 h4 my-3"><%= friend.email %></div>
-      <div class="col-4">
-        <%=link_to "Chat <i class='fa-solid fa-message ms-1'></i>".html_safe, conversation_path(find_conversation(current_user, friend).id), class: "ms-5 small-button bg-primary text-light d-inline" %>
-        <%=link_to "Remove Friend", friend_path(friend.id), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, 'data-turbo-stream': true,  class: "small-button bg-danger text-light d-inline me-5" %>
-      </div>
-    </div>
+<div class="m-5">
+  <%= form_tag(posts_path, method: :get) do %>
+    <div class="d-inline"><%= text_field_tag(:search, params[:search], placeholder: "Search posts.....", class: 'p-2 form-control shadow-none form-search d-inline') %></div>
+    <div class="d-inline"><%= submit_tag("Search", class: "py-2 px-3 small-button text-light d-inline") %></div>
   <% end %>
 </div>
+
+<% if @friends %>
+  <div class="container my-5">
+    <% @friends.each do |friend| %>
+      <div class="user-entry">
+        <div class="col-2 h4"><%= image_tag friend.profile_photo, width: "30%", height: "30%" %></div>
+        <div class="col-3 h4 my-3"><%= friend.name %></div>
+        <div class="col-3 h4 my-3"><%= friend.email %></div>
+        <div class="col-4">
+          <%=link_to "Chat <i class='fa-solid fa-message ms-1'></i>".html_safe, conversation_path(find_conversation(current_user, friend).id), class: "ms-5 small-button bg-primary text-light d-inline" %>
+          <%=link_to "Remove Friend", friend_path(friend.id), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, 'data-turbo-stream': true,  class: "small-button bg-danger text-light d-inline me-5" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="text-center my-3 pagy"><%== pagy_bootstrap_nav(@pagy) %></div>
+  </div>
+<% else %>
+  <div class="container my-5">
+    <div class="h4 my-3">No Friends To Display</div>
+  </div>
+<% end %>
