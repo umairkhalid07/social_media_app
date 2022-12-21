@@ -36,10 +36,9 @@
           <div class="error-messages"><%= message %></div>
         <% end %>
       </div>
-
       <div class="field form-floating">
         <div class="fw-bold my-2"><%= f.label :birthday_at %><br/></div>
-        <div class="my-2"><%= f.date_select :birthday_at, start_year: Date.today.year - 50, end_year: Date.today.year, autofocus: true, :class => 'form-control shadow-none' %></div>
+        <div class="my-2"><%= f.date_select :birthday_at, start_year: Date.today.year - 60, end_year: Date.today.year, start_date: 1, end_date: Date.today.day, autofocus: true, :class => 'form-control shadow-none' %></div>
         <% f.object.errors.full_messages_for(:birthday_at).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>

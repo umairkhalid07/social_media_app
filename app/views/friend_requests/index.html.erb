@@ -10,10 +10,9 @@
         <div class="user-entry">
           <div class="col-1 h4 my-3 text-center"><i class="fa-solid fa-angles-right"></i></div>
           <div class="col-1 h4 my-3 text-center"><%= image_tag request.user.profile_photo, width: "30%", height: "30%" %></div>
-          <div class="col-2 h4 my-3 text-center"><%= request.user.name %></div>
-          <div class="col-2 h4 my-3 text-center"><%= request.user.email %></div>
+          <div class="col-3 h4 my-3 text-center"><%= request.user.name %></div>
           <div class="col-3 h4 my-3 ms-5"><%= request.user.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
-          <div class="col-3 h4 my-3 text-center">
+          <div class="col-4 h4 my-3 text-center">
             <%= link_to "Accept", accept_friend_request_friend_requests_path(request_id: request.id, friend_id: request.user.id), class: "small-button d-inline bg-success text-light" %>
             <%= link_to "Decline", friend_request_path(request), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "small-button d-inline bg-danger text-light" %>
           </div>
@@ -33,10 +32,9 @@
         <div class="user-entry">
           <div class="col-1 h4 my-3 text-center"><i class="fa-solid fa-angles-left"></i></div>
           <div class="col-1 h4 my-3 text-center"><%= image_tag request.friend.profile_photo, width: "30%", height: "30%" %></div>
-          <div class="col-2 h4 my-3 text-center"><%= request.friend.name %></div>
-          <div class="col-2 h4 my-3 text-center"><%= request.friend.email %></div>
+          <div class="col-3 h4 my-3 text-center"><%= request.friend.name %></div>
           <div class="col-3 h4 my-3 ms-5"><%= request.friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
-          <div class="col-3 h4 my-3 text-center">
+          <div class="col-4 h4 my-3 text-center">
             <%= link_to "Delete", friend_request_path(request), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "small-button d-inline bg-danger text-light" %>
           </div>
         </div>
