@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_posts, only: [:edit, :update, :destroy]
   def index
-    if params[:search].present?
-      @pagy, @posts = pagy(Post.includes(:comments, :reactions).where("post.content LIKE ?", "#{params[:search]}%"))
-    else
-      @pagy, @posts = pagy(Post.includes(:comments, :reactions))
-    end
+    # if params[:search].present?
+    #   @pagy, @posts = pagy(Post.includes(:comments, :reactions).where("post.content LIKE ?", "#{params[:search]}%"))
+    # else
+    #   @pagy, @posts = pagy(Post.includes(:comments, :reactions))
+    # end
+    @pagy, @posts = pagy(Post.includes(:comments, :reactions))
   end
 
   def new

@@ -15,7 +15,10 @@ class User < ApplicationRecord
   validates :name, :phone_number, :bio, :location, :birthday_at, :email, :profile_photo, presence: true
   validates :email, :phone_number, uniqueness: true
   validates :bio, length: { minimum: 20 }
-  validates :phone_number, length: { is: 11 }
+
+  valid_phone_number_a = /\d{1,2}:\d{2}/
+  valid_phone_number_b = /\d{1,2}:\d{2}/
+  validates :phone_number, length: { is: 12 }
 
   default_scope { order(name: :asc) }
 

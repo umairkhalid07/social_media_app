@@ -17,10 +17,10 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      flash.now[:success] => "Comment updated !"
+      flash.now[:success] = "Comment updated !"
       render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
     else
-      flash.now[:error] => "Comment Not updated, please try again."
+      flash.now[:error] = "Comment not updated, please try again."
       render turbo_stream: turbo_stream.prepend("flash", partial: "layouts/flash")
     end
   end
