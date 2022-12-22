@@ -4,8 +4,8 @@
     <%= form_with model: [post] do |form| %>
 
       <div class="field form-floating">
-        <div class="fw-bold my-2"><%= form.label :content %></div>
-        <div class="my-2"><%= form.rich_text_area :content, size: "1x10", autofocus: true, :class => 'form-control shadow-none p-2 h-100' %></div>
+        <div class="fw-bold my-2"><span class='text-danger me-2'>*</span><%= form.label :content %></div>
+        <div class="my-2"><%= form.rich_text_area :content, size: "1x10", autofocus: true, :class => 'form-control shadow-none p-2 h-100', required: true %></div>
       </div>
 
       <div class="field form-floating">

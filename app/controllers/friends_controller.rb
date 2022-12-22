@@ -12,13 +12,17 @@ class FriendsController < ApplicationController
 
   def destroy
     @friend = current_user.friends.find(params[:id])
-    @conversation = find_conversation(current_user,  @friend)
-    @conversation.destroy
-    current_user.remove_friend(current_user, @friend)
 
     respond_to do |format|
-      format.html { redirect_to friends_path, notice: "Friend Removed" }
-      format.turbo_stream { redirect_to friends_path, flash.now[:notice] => "Friend Removed" }
+      if current_user.remove_friend(current_user, @friend)
+        @conversation = find_conversation(current_user,  @friend)
+        @conversation.destroy
+        format.html { redirect_to friends_path, notice: "Friend removed" }
+        format.turbo_stream { redirect_to friends_path, flash.now[:notice] => "Friend removed" }
+      else
+        format.html { redirect_to friends_path, notice: "Cant remove friend" }
+        format.turbo_stream { redirect_to friends_path, flash.now[:notice] => "Cant remove friend" }
+      end
     end
   end
 

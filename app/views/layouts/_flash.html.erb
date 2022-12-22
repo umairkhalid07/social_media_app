@@ -3,5 +3,7 @@
     <div class="notifications-success" data-controller="removals" data-action="animationend->removals#remove"><%= message %></div>
   <% elsif type == 'error' %>
     <div class="notifications-error" data-controller="removals" data-action="animationend->removals#remove"><%= message %></div>
+  <% else %>
+    <div class="notifications-success" data-controller="removals" data-action="animationend->removals#remove"><%= message %></div>
   <% end %>
 <% end %>

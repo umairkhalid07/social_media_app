@@ -24,4 +24,8 @@ module ApplicationHelper
   def show_turbo_notice
     turbo_stream.prepend "flash", partial: "layouts/flash"
   end
+
+  def get_incoming_friend_requests
+    FriendRequest.where(friend_id: current_user.id).count
+  end
 end

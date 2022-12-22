@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_posts, only: [:edit, :update, :destroy]
   def index
     # if params[:search].present?
-    #   @pagy, @posts = pagy(Post.includes(:comments, :reactions).where("post.content LIKE ?", "#{params[:search]}%"))
+    #   @posts = Post.where()
+    #   @pagy = pagy(Post.includes(:comments, :reactions))
     # else
     #   @pagy, @posts = pagy(Post.includes(:comments, :reactions))
     # end
@@ -16,12 +17,21 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.create(post_params)
     @post.save
-    if @post.persisted?
-      flash.now[:success] = "Post created !"
-      redirect_to root_path
-    else
-      flash.now[:error] = "Post not created, please try again"
-      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+
+    respond_to do |format|
+      if @post.persisted?
+        format.html { redirect_to root_path, notice: "Post created !" }
+        format.turbo_stream { redirect_to root_path, flash.now[:success] => "Post created !" }
+      else
+        format.html {
+          flash.now[:error] = "Post not created, please try again"
+          render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+        }
+        format.turbo_stream {
+          flash.now[:error] = "Post not created, please try again"
+          render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+        }
+      end
     end
   end
 
@@ -29,12 +39,20 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      flash.now[:success] = "Post updated !"
-      redirect_to root_path
-    else
-      flash.now[:error] = "Post not updated, please try again."
-      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to root_path, notice: "Post updated !" }
+        format.turbo_stream { redirect_to root_path, flash.now[:success] => "Post updated !" }
+      else
+        format.html {
+          flash.now[:error] = "Post not updated, please try again."
+          render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+        }
+        format.turbo_stream {
+          flash.now[:error] = "Post not updated, please try again."
+          render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+        }
+      end
     end
   end
 

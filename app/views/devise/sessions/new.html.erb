@@ -6,16 +6,16 @@
     <%= form_for(resource, as: resource_name,html: {'data-turbo' => false}, url: session_path(resource_name)) do |f| %>
 
       <div class="field form-floating">
-        <div class="fw-bold my-2"><%= f.label :email %><br/></div>
-        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control shadow-none' %></div>
+        <div class="fw-bold my-2"><span class='text-danger me-2'>*</span><%= f.label :email %><br/></div>
+        <div class="my-2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control shadow-none', required: true %></div>
         <% f.object.errors.full_messages_for(:email).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>
       </div>
 
       <div class="field form-floating">
-        <div class="fw-bold my-2"><%= f.label :password %><br /></div>
-        <div class="my-2"><%= f.password_field :password, autocomplete: "current-password", :class => 'form-control shadow-none' %></div>
+        <div class="fw-bold my-2"><span class='text-danger me-2'>*</span><%= f.label :password %><br /></div>
+        <div class="my-2"><%= f.password_field :password, autocomplete: "current-password", :class => 'form-control shadow-none', required: true %></div>
         <% f.object.errors.full_messages_for(:password).each do |message| %>
           <div class="error-messages"><%= message %></div>
         <% end %>

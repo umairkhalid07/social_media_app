@@ -15,10 +15,13 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse center-nav p-0">
       <ul class="navbar-nav w-100">
-<!--        <div id="flash"><%#= render "layouts/flash" %></div>-->
-        .<div class="w-100">
+        .<div class="ms-auto ">
           <% if user_signed_in? %>
-            <p class="m-0 fs-6 fst-italic text-light align-middle text-end"><i class="d-inline fa-solid fa-user-large me-2"></i> Signed in as <%= current_user.name %></p>
+            <div class="fs-6 fst-italic text-light d-inline text-end">
+              <span><i class="fa-solid fa-user-large me-2"></i> Signed in as <%= current_user.name %></span>
+              <span class="mx-3">|</span>
+              <span><%= link_to "Sign Out".html_safe, destroy_user_session_path, 'data-turbo-method': :delete, class: "no-deco text-light #{current_path(destroy_user_session_path)}" %></span>
+            </div>
           <% end %>
         </div>
       </ul>

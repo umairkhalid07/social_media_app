@@ -15,14 +15,24 @@ class User < ApplicationRecord
   validates :name, :phone_number, :bio, :location, :birthday_at, :email, :profile_photo, presence: true
   validates :email, :phone_number, uniqueness: true
   validates :bio, length: { minimum: 20 }
+  validate :check_future_date
 
-  valid_phone_number_a = /\d{1,2}:\d{2}/
-  valid_phone_number_b = /\d{1,2}:\d{2}/
-  validates :phone_number, length: { is: 12 }
+  valid_phone_number_a = /^\+92\d{10}$/
+  valid_phone_number_b = /^[0]\d{10}$/
+  valid_phone_number = /#{valid_phone_number_a}|#{valid_phone_number_b}/
+  validates :phone_number, format: { with: valid_phone_number }
 
   default_scope { order(name: :asc) }
 
   def remove_friend(user, friend)
     user.friends.destroy(friend)
+  end
+
+  private
+
+  def check_future_date
+    if birthday_at > Date.today
+      errors.add(:birthday_at, "can't be in the future")
+    end
   end
 end
