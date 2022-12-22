@@ -8,13 +8,8 @@
         <div class="my-2"><%= form.rich_text_area :content, size: "1x10", autofocus: true, :class => 'form-control shadow-none p-2 h-100', required: true %></div>
       </div>
 
-      <div class="field form-floating">
-        <div class="fw-bold my-2"><%= form.label "Picture Attachment" %></div>
-        <div class="my-2"><%= form.file_field :image, required: false, direct_upload: true, accept: "image/png,image/jpg,image/jpeg" %></div>
-      </div>
-
-      <div class="actions">
-        <%= form.submit "Post", :class => "my-2 small-button text-light" %>
+      <div class="actions text-center">
+        <%= form.submit "Post", :class => "my-2 small-button text-light w-100" %>
       </div>
     <% end %>
   </div>
