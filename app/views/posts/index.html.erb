@@ -1,11 +1,5 @@
-<div class="display-5 text-center fw-bold py-3 post-heading">Your Feed</div>
-
-<div class="m-5">
-  <%= form_tag(posts_path, method: :get) do %>
-    <div class="d-inline"><%= text_field_tag(:search, params[:search], placeholder: "Search posts.....", class: 'p-2 form-control shadow-none form-search d-inline') %></div>
-    <div class="d-inline"><%= submit_tag("Search", class: "py-2 px-3 small-button text-light d-inline") %></div>
-  <% end %>
-</div>
+<div class="d-md-block d-none display-5 text-center fw-bold py-3 post-heading">Your Feed</div>
+<div class="d-md-none d-block h4 text-center fw-bold py-1 post-heading">Your Feed</div>
 
 <%= turbo_stream_from "posts" %>
 <%= turbo_frame_tag "posts" do %>

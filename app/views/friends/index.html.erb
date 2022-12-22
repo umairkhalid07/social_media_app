@@ -1,9 +1,10 @@
-<div class="display-5 text-center fw-bold py-3 post-heading">Friends List</div>
+<div class="d-md-block d-none display-5 text-center fw-bold py-3 post-heading">Friends</div>
+<div class="d-md-none d-block h4 text-center fw-bold py-1 post-heading">Friends</div>
 
-<div class="m-5">
-  <%= form_tag(friends_path, method: :get) do %>
-    <div class="d-inline"><%= text_field_tag(:search, params[:search], placeholder: "Search posts.....", class: 'p-2 form-control shadow-none form-search d-inline') %></div>
-    <div class="d-inline"><%= submit_tag("Search", class: "py-2 px-3 small-button text-light d-inline") %></div>
+<div>
+  <%= form_tag(friends_path, method: :get, class: "flex-container mx-5 my-3") do %>
+    <div style="flex: 1"><%= text_field_tag(:search, params[:search], placeholder: "Search friends.....", class: 'p-2 form-control shadow-none') %></div>
+    <div><%= submit_tag("Search", class: "py-2 px-3 small-button text-light") %></div>
   <% end %>
 </div>
 
@@ -20,7 +21,9 @@
         </div>
       </div>
     <% end %>
-    <div class="text-center my-3 pagy"><%== pagy_bootstrap_nav(@pagy) %></div>
+    <% unless params[:search].present? %>
+      <div class="text-center my-3 pagy"><%== pagy_bootstrap_nav(@pagy) %></div>
+    <% end %>
   </div>
 <% else %>
   <div class="container my-5">

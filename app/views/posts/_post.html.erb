@@ -44,13 +44,11 @@
         <% end %>
         <hr>
         <p class="card-text d-inline fw-bold my-4">Add a comment</p>
-        <div class="m-0 p-0">
-          <%= form_with model: [post, post.comments.build], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" } do |form| %>
-            <%= form.hidden_field :post_id, value: post.id %>
-            <div class="d-inline mb-0 pb-0"><%= form.text_field :text, class: 'p-2 form-control shadow-none form-comment d-inline' %></div>
-            <div class="d-inline mb-0 pb-0"><%= form.submit "Comment", class: "p-2 small-button text-light" %></div>
-          <% end %>
-        </div>
+        <%= form_with model: [post, post.comments.build], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" }, class: "flex-container" do |form| %>
+          <%= form.hidden_field :post_id, value: post.id %>
+          <div style="flex: 1"><%= form.text_field :text, class: 'p-2 form-control shadow-none' %></div>
+          <div><%= form.submit "Comment", class: "p-2 small-button text-light" %></div>
+        <% end %>
       </div>
     </div>
   </div>

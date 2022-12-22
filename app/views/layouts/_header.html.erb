@@ -1,17 +1,22 @@
 <div class="row m-0 p-0">
-  <div class="col-3 m-0 p-0">
+  <div class="col-xxl-3 m-0 p-0 d-xxl-block d-none">
     <%= image_tag("Brainx_logo.png", alt: "logo", style: "height: 100%; width: 100%;", class: "m-0 p-0") %>
   </div>
-  <div class="col-9 m-0 p-0">
-    <h1 class="display-2 fw-bold text-center bg-primary py-2 m-0 text-light">
+  <div class="col-xxl-9 col-12 m-0 p-0">
+    <h1 class="d-lg-block d-none display-2 fw-bold text-center bg-primary py-2 m-0 text-light">
       <%= image_tag("Brainx_logo_small.png", alt: "logo", style: "height: 5%; width: 5%;", class: "m-0 p-0 align-middle logo") %>
+      <div class="d-inline align-middle text-dark ">BRAINX</div>
+      <div class="d-inline align-middle text-white">MEDIA</div>
+    </h1>
+    <h1 class="d-lg-none d-block display-6 fw-bold text-center bg-primary py-2 m-0 text-light">
+      <%= image_tag("Brainx_logo_small.png", alt: "logo", style: "height: 3%; width: 3%;", class: "m-0 p-0 align-middle logo") %>
       <div class="d-inline align-middle text-dark ">BRAINX</div>
       <div class="d-inline align-middle text-white">MEDIA</div>
     </h1>
   </div>
 </div>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark d-xl-block d-none">
   <div class="container-fluid">
     <div class="collapse navbar-collapse center-nav p-0">
       <ul class="navbar-nav w-100">

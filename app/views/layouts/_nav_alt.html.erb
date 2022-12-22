@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+  <div class="accordion d-xl-none d-block" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><span class="fst-bold h6 text-dark">NavBar</span></button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion">
+          <div><%= link_to "<i class='mt-1 mx-3 fa-solid fa-house me-2'></i> Home".html_safe, root_path, class: "nav-button-alt #{current_path(root_path)}" %></div>
+          <div><%= link_to "<i class='mt-1 mx-3 fa-solid fa-clipboard me-2'></i> New Post".html_safe, new_post_path(current_user), class: "nav-button-alt #{current_path(new_post_path(current_user))}" %></div>
+          <div><%= link_to "<i class='mt-1 mx-3 fa-solid fa-users me-2'></i> Users".html_safe, users_path, class: "nav-button-alt #{current_path(users_path)}" %></div>
+          <div><%= link_to "<i class='mt-1 mx-3 fa-solid fa-user-group me-2'></i> Friends".html_safe, friends_path, class: "nav-button-alt #{current_path(friends_path)}" %></div>
+          <div><%= link_to friend_requests_path, class: "nav-button-alt #{current_path(friend_requests_path)}" do %>
+            <i class='mt-1 mx-3 fa-solid fa-user-plus me-2 align-middle'></i>
+            <div class="align-middle">Friend Requests</div>
+            <% if get_incoming_friend_requests > 0 %><span class="notification-badge-alt ms-2"><%= get_incoming_friend_requests %></span><% end %></div><% end %>
+          </div>
+          <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-address-card me-2'></i> User Profile".html_safe, current_user, class: "nav-button-alt #{current_path(current_user)}" %></div>
+          <div class=""><%= link_to "<i class='mt-1 mx-3 fa-solid fa-right-from-bracket me-2'></i> Sign Out".html_safe, destroy_user_session_path, 'data-turbo-method': :delete, class: "nav-button-alt #{current_path(destroy_user_session_path)}" %></div>
+      </div>
+    </div>
+  </div>
+<% end %>

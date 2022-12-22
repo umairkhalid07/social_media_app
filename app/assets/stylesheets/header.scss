@@ -36,6 +36,20 @@ html, body {
   color: $dark-color;
 }
 
+.nav-button-alt {
+  display: flex;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px 10px;
+  border: 1px solid $dark-color;
+  background-color: $base-color;
+  color: $light-color;
+}
+.nav-button-alt:hover {
+  color: $dark-color;
+}
+
 .sticky-class {
   overflow: hidden !important;
   position: sticky !important;
@@ -68,6 +82,19 @@ html, body {
   padding-top: 2px;
   height: 25px;
   width: 25px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: $error-color;
+  color: $light-color;
+}
+
+.notification-badge-alt {
+  position: relative;
+  font-size: 0.8em;
+  text-align: center;
+  padding-top: 2px;
+  height: 20px;
+  width: 20px;
   display: inline-block;
   border-radius: 50%;
   background-color: $error-color;

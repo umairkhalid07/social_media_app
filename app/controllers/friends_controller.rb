@@ -1,12 +1,11 @@
 class FriendsController < ApplicationController
   def index
     if params[:search].present?
-      @friends = current_user.friends.includes(:conversations).where("name LIKE ?", "#{params[:search]}%")
-      @pagy = pagy(current_user.friends.includes(:conversations))
+      @friends = current_user.friends.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+      @pagy = pagy(@friends)
     else
       @pagy, @friends = pagy(current_user.friends.includes(:conversations))
     end
-    # @pagy, @friends = pagy(current_user.friends.includes(:conversations))
     @conversations = current_user.conversations
   end
 

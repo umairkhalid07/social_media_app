@@ -1,0 +1,31 @@
+@import 'header';
+@import 'form';
+@import 'base';
+
+@media screen and (max-width: 992px) {
+  .form-signin {
+    margin-left: 25% !important;
+    margin-right: 25% !important;
+  }
+  .form-post {
+    margin-left: 8% !important;
+    margin-right: 8% !important;
+  }
+}
+
+@media screen and (max-width: 1640px) {
+  .form-signin {
+    margin-left: 25% !important;
+    margin-right: 25% !important;
+  }
+  .form-post {
+    margin-left: 8% !important;
+    margin-right: 8% !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .chat-window, .border-window {
+    margin: 0 5%;
+  }
+}

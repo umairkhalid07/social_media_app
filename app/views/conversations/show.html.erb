@@ -1,11 +1,12 @@
-<div class="display-5 text-center fw-bold py-3 post-heading">Chat</div>
+<div class="d-md-block d-none display-5 text-center fw-bold py-3 post-heading">Chat</div>
+<div class="d-md-none d-block h4 text-center fw-bold py-1 post-heading">Chat</div>
 
 <div class="border-window mt-3">
   <div class="h5 text-center fw-bold py-2"><%= @friend.name %></div>
 </div>
 
 <div class="chat-window">
-  <div class="messages row">
+  <div class="messages lg row">
     <%= turbo_stream_from "messages" %>
     <%= turbo_frame_tag "messages" do %>
       <%= render @conversation.messages %>
@@ -15,11 +16,11 @@
 
 <div class="border-window">
   <div class="mx-2 p-0">
-    <%= form_with model: [ @conversation, @conversation.messages.build ], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" } do |form| %>
+    <%= form_with model: [ @conversation, @conversation.messages.build ], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" }, class: "flex-container" do |form| %>
       <%= form.hidden_field :user_id, value: current_user.id %>
       <%= form.hidden_field :conversation_id, value: @conversation.id %>
-      <div class="d-inline mb-0 pb-0"><%= form.text_field :body,placeholder: "Type your message here.....", class: 'border-0 p-2 form-control shadow-none form-message d-inline' %></div>
-      <div class="d-inline mb-0 pb-0"><%= form.submit "Message", class: "py-2 px-3 small-button text-light" %></div>
+      <div style="flex: 1"><%= form.text_field :body,placeholder: "Type your message here.....", class: 'border-0 p-2 form-control shadow-none' %></div>
+      <div><%= form.submit "Message", class: "py-2 px-3 small-button text-light" %></div>
     <% end %>
   </div>
 </div>

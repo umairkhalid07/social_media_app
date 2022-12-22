@@ -8,15 +8,6 @@
   margin-left: 20% !important;
   margin-right: 20% !important;
 }
-.form-comment {
-  width: 91%;
-}
-.form-message {
-  width: 88%;
-}
-.form-search {
-  width: 93%;
-}
 
 .link {
   font-size: 16px;
@@ -55,4 +46,9 @@
 
 .no-deco {
   text-decoration: none;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
 }
