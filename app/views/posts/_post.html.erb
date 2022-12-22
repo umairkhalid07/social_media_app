@@ -4,8 +4,17 @@
       <div>
         <%= image_tag post.user.profile_photo, width: "4%", height: "4%", class: "align-middle me-2" %>
         <h5 class=" d-inline align-middle card-title d-inline fw-bold my-4 fs-3"><%= post.user.name %></h5>
-        <p class="card-text d-inline float-end fst-italic fs-6 text-secondary"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p><hr>
-
+        <div class="dropdown float-end">
+          <button class="btn btn-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-bars text-dark fa-2xl"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to "Edit Post", edit_post_path(post.id), :class => "dropdown-item no-deco my-1 h5" %>
+            <%= link_to "Delete Post", post_path(post.id), data: { turbo: true, "turbo-method": :delete, turbo_confirm: "Are you sure?" }, :class => "dropdown-item no-deco my-1 h5" %>
+          </div>
+        </div>
+        <hr>
+        <p class="card-text my-2 fst-italic fs-6 text-secondary"><%= post.created_at.strftime("%I:%M %p, %d/%m/%Y") %></p>
         <p class="card-text my-4 fs-4"><%= post.content %></p>
       </div><hr>
 
@@ -25,13 +34,6 @@
 
           <div class="d-inline" id="<%= 'dislikes_' + dom_id(post) %>">
             <%= render "reactions/dislike", post: post %>
-          </div>
-        </div>
-
-        <div class="d-inline me-2 float-end">
-          <div data-controller="hide" data-action="hide#connect" data-hide-userid-value="<%= post.user.id %>">
-            <%= link_to "Edit Post", edit_post_path(post.id), :class => "small-button me-2 bg-primary text-light" %>
-            <%= link_to "Delete Post", post_path(post.id), data: { turbo: true, "turbo-method": :delete, turbo_confirm: "Are you sure?" }, :class => "small-button bg-danger text-light" %>
           </div>
         </div>
       </div><hr>

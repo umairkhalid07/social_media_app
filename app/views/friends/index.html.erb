@@ -11,11 +11,10 @@
 <% if @friends %>
   <div class="container my-5">
     <% @friends.each do |friend| %>
-      <div class="user-entry">
-        <div class="col-2 h4"><%= image_tag friend.profile_photo, width: "30%", height: "30%" %></div>
-        <div class="col-3 h4 my-3"><%= friend.name %></div>
-        <div class="col-3 h4 my-3"><%= friend.email %></div>
-        <div class="col-4">
+      <div class="flex-container user-entry">
+        <div class="h4" style="flex: 0.2"><%= image_tag friend.profile_photo, width: "25%"%></div>
+        <div class="h4" style="flex: 0.3"><%= friend.name %></div>
+        <div style="flex: 0.5">
           <%=link_to "Chat <i class='fa-solid fa-message ms-1'></i>".html_safe, conversation_path(find_conversation(current_user, friend).id), class: "ms-5 small-button bg-primary text-light d-inline" %>
           <%=link_to "Remove Friend", friend_path(friend.id), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, 'data-turbo-stream': true,  class: "small-button bg-danger text-light d-inline me-5" %>
         </div>

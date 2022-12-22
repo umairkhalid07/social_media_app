@@ -8,14 +8,13 @@
     <% if @requests.where(friend: current_user).count > 0 %>
       <div class="h3 my-5 text-center">Incoming Requests</div>
       <% @requests.where(friend: current_user).each do |request| %>
-        <div class="user-entry">
-          <div class="col-1 h4 my-3 text-center"><i class="fa-solid fa-angles-right"></i></div>
-          <div class="col-1 h4 my-3 text-center"><%= image_tag request.user.profile_photo, width: "30%", height: "30%" %></div>
-          <div class="col-3 h4 my-3 text-center"><%= request.user.name %></div>
-          <div class="col-3 h4 my-3 ms-5"><%= request.user.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
-          <div class="col-4 h4 my-3 text-center">
-            <%= link_to "Accept", accept_friend_request_friend_requests_path(request_id: request.id, friend_id: request.user.id), class: "small-button d-inline bg-success text-light" %>
-            <%= link_to "Decline", friend_request_path(request), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "small-button d-inline bg-danger text-light" %>
+        <div class="user-entry flex-container">
+          <div class="h4" style="flex: 0.2"><%= image_tag request.user.profile_photo, width: "25%" %></div>
+          <div class="h4" style="flex: 0.2"><%= request.user.name %></div>
+          <div class="h4 d-lg-block d-none" style="flex: 0.3"><%= request.user.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
+          <div style="flex: 0.6">
+            <%= link_to "Accept", accept_friend_request_friend_requests_path(request_id: request.id, friend_id: request.user.id), class: "small-button d-inline bg-success text-light my-5" %>
+            <%= link_to "Decline", friend_request_path(request), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "small-button d-inline bg-danger text-light my-5" %>
           </div>
         </div>
       <% end %>
@@ -30,12 +29,11 @@
     <div class="container my-5">
       <div class="h3 my-5 text-center">Outgoing Requests</div>
       <% @requests.where(user: current_user).each do |request| %>
-        <div class="user-entry">
-          <div class="col-1 h4 my-3 text-center"><i class="fa-solid fa-angles-left"></i></div>
-          <div class="col-1 h4 my-3 text-center"><%= image_tag request.friend.profile_photo, width: "30%", height: "30%" %></div>
-          <div class="col-3 h4 my-3 text-center"><%= request.friend.name %></div>
-          <div class="col-3 h4 my-3 ms-5"><%= request.friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
-          <div class="col-4 h4 my-3 text-center">
+        <div class="user-entry flex-container">
+          <div class="h4" style="flex: 0.2"><%= image_tag request.friend.profile_photo, width: "30%", height: "30%" %></div>
+          <div class="h4" style="flex: 0.2"><%= request.friend.name %></div>
+          <div class="h4 d-lg-block d-none" style="flex: 0.3"><%= request.friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
+          <div style="flex: 0.3">
             <%= link_to "Delete", friend_request_path(request), data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "small-button d-inline bg-danger text-light" %>
           </div>
         </div>

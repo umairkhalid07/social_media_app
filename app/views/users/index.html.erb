@@ -12,18 +12,18 @@
 <%= turbo_frame_tag "users" do %>
   <div class="m-5">
     <% @users.each do |user| %>
-      <div class="user-entry">
-        <div class="col-lg-2 col-4 h4"><%= image_tag user.profile_photo, width: "30%", height: "30%" %></div>
-        <div class="col-lg-3 col-8 h4"><%= user.name %></div>
-        <div class="col-lg-3 h4 d-none d-xl-block"><%= user.email %></div>
+      <div class="flex-container user-entry">
+        <div style="flex: 0.2"><%= image_tag user.profile_photo, width: "25%" %></div>
+        <div class="h4" style="flex: 0.2"><%= user.name %></div>
+        <div class="h4 d-lg-block d-none" style="flex: 0.3"><%= user.email %></div>
         <% if current_user.friends.include?(user) %>
-          <div class="col-lg-4 col-12"><%=link_to "Friends <i class='mx-2 fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-success text-light disabled" %></div>
+          <div style="flex: 0.3"><%=link_to "Friends <i class='mx-2 fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button bg-success text-light disabled" %></div>
         <% elsif current_user.pending_friends.include?(user) %>
-          <div class="col-lg-4 col-12"><%= link_to "Sent Request <i class='fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
+          <div style="flex: 0.3"><%= link_to "Sent Request <i class='fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button bg-secondary text-light disabled" %></div>
         <% elsif user == current_user %>
-          <div class="col-lg-4 col-12"><%= link_to "You <i class='fa-solid fa-user-large ms-3'></i>".html_safe, root_path, class: "small-button mx-5 bg-secondary text-light disabled" %></div>
+          <div style="flex: 0.3"><%= link_to "You <i class='fa-solid fa-user-large ms-3'></i>".html_safe, root_path, class: "small-button bg-secondary text-light disabled" %></div>
         <% else %>
-          <div class="col-lg-4 col-11"><%= link_to "Add Friend <i class='fa-solid fa-user-plus ms-3'></i>".html_safe, create_friend_request_friend_requests_path(user_id: user.id), class: "small-button mx-5 bg-warning text-dark" %></div>
+          <div style="flex: 0.3"><%= link_to "Add Friend <i class='fa-solid fa-user-plus ms-3'></i>".html_safe, create_friend_request_friend_requests_path(user_id: user.id), class: "small-button bg-warning text-dark" %></div>
         <% end %>
       </div>
     <% end %>
