@@ -29,3 +29,10 @@
     margin: 0 5%;
   }
 }
+
+@media screen and (max-width: 815px) {
+  .small-button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
