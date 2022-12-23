@@ -1,6 +1,6 @@
-<div class="my-2">
+<div class="my-1">
   <%= turbo_frame_tag dom_id(comment) do %>
-    <%= image_tag comment.user.profile_photo, width: "3%", height: "3%", class: "align-top mt-2" %>
+    <%= image_tag comment.user.profile_photo, width: "40px", class: "align-top mt-2" %>
     <div class="comment-box my-2">
       <p class="card-text d-inline fw-bold my-3 fs-5"><%= comment.user.name %></p><br>
       <p class="card-text d-inline my-3 fs-5 "><%= comment.text %></p><br>

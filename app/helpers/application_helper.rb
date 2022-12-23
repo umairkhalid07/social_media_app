@@ -1,9 +1,5 @@
 module ApplicationHelper
   include Pagy::Frontend
-  def render_flash_messages
-    turbo_stream.update "flash", partial: "layouts/flash"
-  end
-
   def get_likes(post)
     post.reactions.where(reaction_type: true).count
   end
@@ -19,10 +15,6 @@ module ApplicationHelper
 
   def current_path(path)
     "current" if current_page?(path)
-  end
-
-  def show_turbo_notice
-    turbo_stream.prepend "flash", partial: "layouts/flash"
   end
 
   def get_incoming_friend_requests

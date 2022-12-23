@@ -9,7 +9,7 @@
 
 .user-entry {
   border: 1px solid $dark-color;
-  padding: 20px 30px;
+  padding: 15px 30px;
 }
 
 .post-heading {
@@ -66,27 +66,24 @@
   border-radius: 15px;
   text-align: left;
 }
-
 .sent-message-container {
   text-align: right;
 }
-
+.received-message-container {
+  text-align: left;
+}
 .received-message {
   display: inline-block;
   background-color: $secondary-color;
   color: black;
   padding: 10px 20px;
   margin: 10px 20px;
-  font-size: 1.3em;
+  font-size: 1.2em;
   border-radius: 15px;
   text-align: left;
 }
 
-.received-message-container {
-  text-align: left;
-}
-
-.notifications-success {
+.notification {
   font-weight: bold;
   max-width: 100%;
   width: max-content;
@@ -97,27 +94,25 @@
   left: 30px;
   padding: 10px 40px;
   border-radius: 5px;
+  color: $light-color;
+  animation: fade 5s both;
+}
+.notification-success {
   background-color: $success-color;
-  color: $light-color;
-  animation: fade 5s both;
 }
-.notifications-error {
-  font-weight: bold;
-  max-width: 100%;
-  width: max-content;
-  display: flex;
-  position: fixed;
-  z-index: 100;
-  bottom: 30px;
-  left: 30px;
-  padding: 10px 40px;
-  border-radius: 5px;
+.notification-error {
   background-color: $error-color;
-  color: $light-color;
-  animation: fade 5s both;
 }
 @keyframes fade {
   0% {opacity: 1;}
   50% {opacity: 1;}
   100% {opacity: 0;}
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }

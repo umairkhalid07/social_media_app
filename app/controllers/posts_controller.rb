@@ -1,12 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_posts, only: [:edit, :update, :destroy]
   def index
-    # if params[:search].present?
-    #   @posts = Post.where()
-    #   @pagy = pagy(Post.includes(:comments, :reactions))
-    # else
-    #   @pagy, @posts = pagy(Post.includes(:comments, :reactions))
-    # end
     @pagy, @posts = pagy(Post.includes(:comments, :reactions))
   end
 

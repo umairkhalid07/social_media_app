@@ -14,14 +14,14 @@ class FriendRequest < ApplicationRecord
   end
 
   def not_self
-    errors.add(:friend,"Cant send yourself a friend request") if user == friend
+    errors.add(:friend,"is yourself") if user == friend
   end
 
   def not_friends
-    errors.add(:friend,'User is already added') if user.friends.include?(friend)
+    errors.add(:friend,'is already added') if user.friends.include?(friend)
   end
 
   def not_pending
-    errors.add(:friend, 'You have already requested friendship') if friend.pending_friends.include?(user)
+    errors.add(:friend, 'has already been requested') if friend.pending_friends.include?(user)
   end
 end

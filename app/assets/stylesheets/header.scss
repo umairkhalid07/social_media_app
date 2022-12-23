@@ -30,7 +30,7 @@ html, body {
   background-color: $base-color;
   color: $light-color;
   border-radius: 25px;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 .nav-button:hover {
   color: $dark-color;
@@ -40,7 +40,7 @@ html, body {
   display: flex;
   text-decoration: none;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 12px;
   padding: 5px 10px;
   border: 1px solid $dark-color;
   background-color: $base-color;
@@ -90,9 +90,9 @@ html, body {
 
 .notification-badge-alt {
   position: relative;
-  font-size: 16px;
+  font-size: 12px;
   text-align: center;
-  padding-top: 2px;
+  padding-top: 1px;
   height: 20px;
   width: 20px;
   display: inline-block;

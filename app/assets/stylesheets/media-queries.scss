@@ -36,3 +36,11 @@
     padding: 5px 10px;
   }
 }
+
+@media screen and (max-width: 580px) {
+  .sent-message, .received-message {
+    font-size: 0.8em;
+    padding: 10px;
+    margin: 10px 5px;
+  }
+}

@@ -17,13 +17,13 @@
         <div class="h4" style="flex: 0.2"><%= user.name %></div>
         <div class="h4 d-lg-block d-none" style="flex: 0.3"><%= user.email %></div>
         <% if current_user.friends.include?(user) %>
-          <div class="float-end me-5"><%=link_to "Friends <i class='mx-2 fa-solid fa-user-check ms-3 d-inline'></i>".html_safe, root_path, class: "small-button bg-success text-light disabled" %></div>
+          <div class="float-end me-5"><%=link_to "Friends <i class='mx-2 fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button bg-success text-light disabled" %></div>
         <% elsif current_user.pending_friends.include?(user) %>
-          <div class="float-end me-5"><%= link_to "Sent Request <i class='fa-solid fa-user-check ms-3 d-inline'></i>".html_safe, root_path, class: "small-button bg-secondary text-light disabled" %></div>
+          <div class="float-end me-5"><%= link_to "Sent Request <i class='fa-solid fa-user-check ms-3'></i>".html_safe, root_path, class: "small-button bg-secondary text-light disabled" %></div>
         <% elsif user == current_user %>
-          <div class="float-end me-5"><%= link_to "You <i class='fa-solid fa-user-large ms-3 d-inline'></i>".html_safe, root_path, class: "small-button bg-secondary text-light disabled" %></div>
+          <div class="float-end me-5"><%= link_to "You <i class='fa-solid fa-user-large ms-3'></i>".html_safe, root_path, class: "small-button bg-secondary text-light disabled" %></div>
         <% else %>
-          <div class="float-end me-5"><%= link_to "Add Friend <i class='fa-solid fa-user-plus ms-3 d-inline'></i>".html_safe, create_friend_request_friend_requests_path(user_id: user.id), class: "small-button bg-warning text-dark" %></div>
+          <div class="float-end me-5"><%= link_to "Add Friend <i class='fa-solid fa-user-plus ms-3'></i>".html_safe, create_friend_request_friend_requests_path(user_id: user.id), class: "small-button bg-warning text-dark" %></div>
         <% end %>
       </div>
     <% end %>

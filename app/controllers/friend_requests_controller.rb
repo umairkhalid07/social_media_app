@@ -3,20 +3,6 @@ class FriendRequestsController < ApplicationController
     @requests = FriendRequest.all
   end
 
-  def destroy
-    @friend_request = FriendRequest.find(params[:id])
-
-    respond_to do |format|
-      if @friend_request.destroy
-        format.html { redirect_to friend_requests_path, notice: "Deleted friend request" }
-        format.turbo_stream { redirect_to friend_requests_path, flash.now[:success] => "Deleted friend request" }
-      else
-        format.html { redirect_to friend_requests_path, notice: "Cant delete friend request" }
-        format.turbo_stream { redirect_to friend_requests_path, flash.now[:error] => "Cant delete friend request" }
-      end
-    end
-  end
-
   def create_friend_request
     friend = User.find(params[:user_id])
     @friend_request = current_user.friend_requests.new(friend: friend)
@@ -43,6 +29,20 @@ class FriendRequestsController < ApplicationController
       else
         format.html { redirect_to friends_path, notice: "Cant accept friend request" }
         format.turbo_stream { redirect_to friends_path, flash.now[:success] => "Cant accept friend request" }
+      end
+    end
+  end
+
+  def destroy
+    @friend_request = FriendRequest.find(params[:id])
+
+    respond_to do |format|
+      if @friend_request.destroy
+        format.html { redirect_to friend_requests_path, notice: "Deleted friend request" }
+        format.turbo_stream { redirect_to friend_requests_path, flash.now[:success] => "Deleted friend request" }
+      else
+        format.html { redirect_to friend_requests_path, notice: "Cant delete friend request" }
+        format.turbo_stream { redirect_to friend_requests_path, flash.now[:error] => "Cant delete friend request" }
       end
     end
   end

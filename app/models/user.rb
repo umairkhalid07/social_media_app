@@ -17,9 +17,7 @@ class User < ApplicationRecord
   validates :bio, length: { minimum: 20 }
   validate :check_future_date
 
-  valid_phone_number_a = /^\+92\d{10}$/
-  valid_phone_number_b = /^[0]\d{10}$/
-  valid_phone_number = /#{valid_phone_number_a}|#{valid_phone_number_b}/
+  valid_phone_number = /#{/^\+92\d{10}$/}|#{/^[0]\d{10}$/}/
   validates :phone_number, format: { with: valid_phone_number }
 
   default_scope { order(name: :asc) }

@@ -30,7 +30,7 @@
       <div class="h3 my-5 text-center">Outgoing Requests</div>
       <% @requests.where(user: current_user).each do |request| %>
         <div class="user-entry flex-container">
-          <div class="h4" style="flex: 0.2"><%= image_tag request.friend.profile_photo, width: "30%", height: "30%" %></div>
+          <div class="h4" style="flex: 0.2"><%= image_tag request.friend.profile_photo, width: "50px" %></div>
           <div class="h4" style="flex: 0.2"><%= request.friend.name %></div>
           <div class="h4 d-lg-block d-none" style="flex: 0.3"><%= request.friend.created_at.strftime("%d/%m/%Y, %I:%M %p") %></div>
           <div class="float-end me-5">
